@@ -3,32 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Care Facilities Management — Outsourced Facilities Management for UK Buildings</title>
-<meta name="description" content="Is your facilities team being pulled in every direction? CFM manages contractors, compliance and day-to-day operations for you. Book your free facilities review.">
+<title>Care Facilities Management | Nationwide Facilities Management Company</title>
+<meta name="description" content="Is your facilities team being pulled in every direction? CFM manages contractors, compliance and day-to-day operations for you, nationwide. Get a quote today.">
 <meta name="robots" content="noindex, follow"><!-- Landing page for paid traffic — remove noindex if you want it indexed -->
-<meta property="og:title" content="Care Facilities Management — We manage it all for you">
-<meta property="og:description" content="Contractor emails, maintenance issues, compliance deadlines, tenant requests — it never stops. CFM manages it all for you. Book your free facilities review.">
+<meta property="og:title" content="Care Facilities Management | Nationwide Facilities Management Company">
+<meta property="og:description" content="Contractor emails, maintenance issues, compliance deadlines, tenant requests — it never stops. We manage it all for you. Get a quote from CFM.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://care-facilities.com/contact.html">
-<meta name="theme-color" content="#0B2545">
+<meta name="theme-color" content="#0D2C40">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 /* ============================================================
    CFM Landing Page — single-file, no frameworks, no build step
+   Brand accent: #0079C3 (CFM logo blue) · Navy #0D2C40 (headings/CTA)
    ============================================================ */
 :root{
-  --accent:#1450A3;          /* CFM deep blue — swap for exact logo blue */
-  --accent-dark:#0E3D7E;
-  --navy:#0B2545;            /* headings */
-  --ink:#334155;             /* body text */
-  --muted:#64748B;
-  --bg:#F6F8FB;
+  --accent:#0079C3;          /* CFM brand blue — sampled from the logo */
+  --accent-dark:#00629E;     /* hover shade of the brand blue */
+  --accent-tint:#E5F3FB;     /* pale tint for icon chips */
+  --navy:#0D2C40;            /* headings + final CTA band only */
+  --ink:#33475B;             /* body text */
+  --muted:#5E7387;
+  --bg:#F5F9FC;
   --card:#FFFFFF;
-  --border:#E2E8F0;
+  --border:#DCE6EE;
   --error:#C0392B;
   --success:#1E7B4D;
   --radius:14px;
-  --shadow:0 10px 30px rgba(11,37,69,.10), 0 2px 8px rgba(11,37,69,.06);
+  --shadow:0 10px 30px rgba(13,44,64,.10), 0 2px 8px rgba(13,44,64,.06);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -51,13 +53,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;
 }
 
-/* ---------- Header (logo only, no nav, no exit points) ---------- */
+/* ---------- Top bar (logo + contact, no nav, no exit points) ---------- */
 header{background:#fff;border-bottom:1px solid var(--border)}
-.header-inner{display:flex;align-items:center;padding:12px 24px;max-width:1180px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-mark{width:42px;height:42px;flex:none}
-.logo-text{font-weight:700;color:var(--navy);font-size:1.05rem;line-height:1.15}
-.logo-text small{display:block;font-weight:500;color:var(--muted);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:10px 24px;max-width:1180px;margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+/* CLIENT: drop your logo file in as "logo.png" next to this HTML file.
+   It's the blue circular "CF" mark + "Care Facilities Management" wordmark
+   from the header of care-facilities.com. Recommended height ~48px (use a
+   2x export for retina). If the file is missing, the text fallback below shows. */
+.logo img{height:48px;width:auto;display:block}
+.logo-fallback{display:none;font-weight:700;color:var(--navy);font-size:1.05rem;line-height:1.15}
+.logo-fallback small{display:block;font-weight:500;color:var(--muted);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.header-contact{font-size:.92rem;color:var(--muted);text-align:right;white-space:nowrap}
+.header-contact a{color:var(--navy);text-decoration:none;font-weight:600}
+.header-contact a:hover{color:var(--accent)}
+.header-contact .sep{color:var(--border);margin:0 8px}
 
 /* ---------- Hero / split layout ---------- */
 .split{
@@ -75,32 +88,37 @@ header{background:#fff;border-bottom:1px solid var(--border)}
 .form-col{grid-area:form;align-self:stretch}
 .form-sticky{position:sticky;top:20px}
 
-.eyebrow{color:var(--accent);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.kicker{color:var(--accent);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
 .hero-intro h1{font-size:clamp(2rem,3.4vw,2.9rem);margin-bottom:14px}
 .subhead{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--ink);max-width:34em}
 
-.benefits{list-style:none;margin-top:26px;display:grid;gap:16px}
+.benefits{list-style:none;margin-top:24px;display:grid;gap:16px}
 .benefits li{display:flex;gap:14px;align-items:flex-start}
 .benefit-icon{
   flex:none;width:44px;height:44px;border-radius:12px;
-  background:#E8F0FC;color:var(--accent);
+  background:var(--accent-tint);color:var(--accent);
   display:flex;align-items:center;justify-content:center;
 }
 .benefit-icon svg{width:24px;height:24px}
 .benefits h3{font-size:1.05rem;margin-bottom:2px}
 .benefits p{font-size:.98rem;color:var(--muted)}
-.trust-line{
-  margin-top:24px;font-size:.92rem;color:var(--muted);
-  display:flex;align-items:center;gap:8px;
+
+/* Accreditation trust strip — real CFM accreditations only */
+.trust-strip{margin-top:24px}
+.trust-strip p{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.badges{display:flex;flex-wrap:wrap;gap:8px 10px;list-style:none}
+.badges li{
+  font-size:.82rem;font-weight:600;color:#69788A;
+  background:#EEF2F6;border:1px solid var(--border);border-radius:999px;
+  padding:5px 14px;white-space:nowrap;
 }
-.trust-line svg{width:18px;height:18px;color:var(--success);flex:none}
 
 /* ---------- Form card ---------- */
 .form-card{
   background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
   padding:24px;border:1px solid var(--border);
 }
-.form-card h2{font-size:1.45rem;margin-bottom:6px}
+.form-card h2{font-size:1.5rem;margin-bottom:4px}
 .form-sub{font-size:.95rem;color:var(--muted);margin-bottom:14px}
 .field{margin-bottom:12px}
 .field label{display:block;font-weight:600;font-size:.9rem;color:var(--navy);margin-bottom:5px}
@@ -109,7 +127,7 @@ header{background:#fff;border-bottom:1px solid var(--border)}
   width:100%;font:inherit;font-size:1rem;color:var(--navy);
   padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:#fff;
 }
-.field textarea{resize:vertical;min-height:64px}
+.field textarea{resize:vertical;min-height:60px}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
 .field.invalid input,.field.invalid select{border-color:var(--error)}
 .error-msg{display:none;color:var(--error);font-size:.85rem;margin-top:4px}
@@ -131,6 +149,8 @@ header{background:#fff;border-bottom:1px solid var(--border)}
 .form-success svg{width:56px;height:56px;color:var(--success);margin-bottom:14px}
 .form-success h2{font-size:1.4rem;margin-bottom:8px}
 .form-success p{color:var(--muted);font-size:.98rem}
+.form-success .call-now{margin-top:12px;color:var(--ink)}
+.form-success .call-now a{font-weight:700;text-decoration:none}
 
 /* ---------- Below-hero sections ---------- */
 section{padding:56px 0}
@@ -141,7 +161,7 @@ section{padding:56px 0}
 .pain p{margin-bottom:14px;max-width:38em}
 .pain strong{color:var(--navy)}
 
-.steps{list-style:none;display:grid;gap:18px;counter-reset:step}
+.steps{list-style:none;display:grid;gap:18px}
 .steps li{
   background:#fff;border:1px solid var(--border);border-radius:var(--radius);
   padding:20px 22px;display:flex;gap:16px;align-items:flex-start;
@@ -155,7 +175,7 @@ section{padding:56px 0}
 .steps p{font-size:.95rem;color:var(--muted)}
 
 /* Services grid */
-.services{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.band{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .service{
   background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;
@@ -164,21 +184,17 @@ section{padding:56px 0}
 .service h3{font-size:1.02rem;margin-bottom:4px}
 .service p{font-size:.92rem;color:var(--muted)}
 
-/* Proof points / testimonials */
-.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-bottom:36px}
-.proof{
-  background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;
+/* Nationwide / accreditations */
+.nationwide{max-width:760px}
+.nationwide p{margin-bottom:14px}
+.nationwide strong{color:var(--navy)}
+.badges-lg{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin-top:22px}
+.badges-lg li{
+  font-size:.92rem;font-weight:600;color:#69788A;
+  background:#fff;border:1px solid var(--border);border-radius:12px;
+  padding:14px 22px;display:flex;align-items:center;gap:10px;
 }
-.proof .stat{font-size:1.25rem;font-weight:800;color:var(--accent);display:block;margin-bottom:6px}
-.proof p{font-size:.95rem;color:var(--muted)}
-.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.testimonial{
-  background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);
-  border-radius:var(--radius);padding:24px;
-}
-.testimonial blockquote{font-size:1rem;color:var(--ink);margin-bottom:14px;font-style:italic}
-.testimonial cite{font-style:normal;font-size:.9rem;color:var(--muted)}
-.testimonial cite strong{color:var(--navy)}
+.badges-lg svg{width:20px;height:20px;color:#8B99A9;flex:none}
 
 /* FAQ */
 .faq-list{max-width:760px}
@@ -201,37 +217,51 @@ section{padding:56px 0}
 /* Final CTA band */
 .cta-band{background:var(--navy);text-align:center}
 .cta-band h2{color:#fff;font-size:clamp(1.5rem,2.6vw,2.1rem);margin-bottom:10px}
-.cta-band p{color:#B9C6DA;margin-bottom:26px;font-size:1.05rem}
+.cta-band .cta-sub{color:#AFC3D2;margin-bottom:26px;font-size:1.05rem}
 .cta-btn{
   display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
   font-weight:700;font-size:1.1rem;padding:15px 36px;border-radius:10px;
   transition:background .15s ease;
 }
-.cta-btn:hover{background:#1B62C4}
+.cta-btn:hover{background:var(--accent-dark)}
+.cta-call{margin-top:18px;color:#AFC3D2;font-size:1rem}
+.cta-call a{color:#fff;font-weight:700;text-decoration:none}
 
 /* Footer */
-footer{background:#081B33;color:#8FA3BE;font-size:.9rem;padding:28px 0}
-.footer-inner{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;align-items:center}
-footer a{color:#C4D2E6;text-decoration:none}
+footer{background:#081E2E;color:#8FA5B6;font-size:.9rem;padding:36px 0 30px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.footer-grid h3{color:#fff;font-size:.95rem;margin-bottom:8px}
+.footer-grid p{line-height:1.55}
+footer a{color:#C2D3DF;text-decoration:none}
 footer a:hover{text-decoration:underline}
+.footer-bottom{
+  margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);
+  display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;align-items:center;
+}
 
-/* Sticky mobile CTA bar */
+/* Sticky mobile CTA bar — two actions: quote + call */
 .sticky-cta{
   display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;
   padding:10px 16px calc(10px + env(safe-area-inset-bottom));
   background:rgba(255,255,255,.96);border-top:1px solid var(--border);
-  box-shadow:0 -6px 20px rgba(11,37,69,.12);
+  box-shadow:0 -6px 20px rgba(13,44,64,.12);
   transform:translateY(110%);transition:transform .25s ease;
 }
 .sticky-cta.show{transform:translateY(0)}
-.sticky-cta a{
-  display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;
+.sticky-cta-inner{display:flex;gap:10px}
+.sticky-cta .quote-btn{
+  flex:1;display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;
   font-weight:700;font-size:1.05rem;padding:14px;border-radius:10px;
 }
+.sticky-cta .call-btn{
+  flex:none;width:54px;display:flex;align-items:center;justify-content:center;
+  background:#fff;color:var(--accent);border:2px solid var(--accent);border-radius:10px;
+}
+.sticky-cta .call-btn svg{width:22px;height:22px}
 
-/* Scroll-in animation (class toggled by IntersectionObserver; disabled by reduced-motion above).
-   Hidden initial state only applies when JS is running (.js on <html>) — no-JS visitors see everything. */
-.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+/* Scroll-in animation (fade-up; class + stagger set by IntersectionObserver;
+   .js gating means no-JS visitors see everything; reduced-motion kills transitions above) */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease-out,transform .5s ease-out}
 .js .reveal.visible{opacity:1;transform:none}
 
 /* ---------- Mobile ---------- */
@@ -239,13 +269,17 @@ footer a:hover{text-decoration:underline}
   .split{
     grid-template-columns:1fr;
     grid-template-areas:"intro" "form" "benefits" "below";
-    padding-top:28px;gap:26px;
+    padding-top:24px;gap:26px;
   }
   .form-sticky{position:static}
   .hero-intro h1{font-size:2rem}
   section{padding:44px 0}
+  .header-contact .email,.header-contact .sep{display:none} /* keep the top bar to one line on small screens */
+  .logo img{height:40px}
+  .logo-fallback{font-size:.92rem}
+  .logo-fallback small{display:none}
   .sticky-cta{display:block}
-  body.has-sticky-cta footer{padding-bottom:96px}
+  body.has-sticky-cta footer{padding-bottom:110px}
 }
 </style>
 </head>
@@ -253,14 +287,17 @@ footer a:hover{text-decoration:underline}
 
 <header>
   <div class="header-inner">
-    <!-- Logo: top-left only, deliberately NOT a link (no exit points on this landing page) -->
+    <!-- Logo: top-left only, deliberately NOT a link (no exit points on this landing page).
+         CLIENT: save your logo (blue circular CF mark + wordmark from care-facilities.com)
+         as "logo.png" alongside this file — see note in the CSS above. -->
     <div class="logo">
-      <svg class="logo-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
-        <rect width="48" height="48" rx="10" fill="#1450A3"/>
-        <path d="M24 10 12 19v19h9v-11h6v11h9V19L24 10z" fill="#fff"/>
-      </svg>
-      <span class="logo-text">CFM<small>Care Facilities Management</small></span>
+      <img src="logo.png" alt="Care Facilities Management" width="220" height="48"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="logo-fallback">Care Facilities Management<small>Nationwide Facilities Management</small></span>
     </div>
+    <p class="header-contact">
+      Call: <a href="tel:+442038144370">020 3814 4370</a><span class="sep">|</span><a class="email" href="mailto:info@care-facilities.com">info@care-facilities.com</a>
+    </p>
   </div>
 </header>
 
@@ -268,7 +305,7 @@ footer a:hover{text-decoration:underline}
   <div class="split">
 
     <div class="hero-intro">
-      <p class="eyebrow">Outsourced facilities management, UK-wide</p>
+      <p class="kicker">Nationwide Facilities Management Company</p>
       <h1>Care Facilities Management</h1>
       <p class="subhead">Is your facilities team being pulled in every direction? Contractor emails, maintenance issues, compliance deadlines, tenant requests — it never stops. <strong>We manage it all for you.</strong></p>
     </div>
@@ -303,10 +340,16 @@ footer a:hover{text-decoration:underline}
           </div>
         </li>
       </ul>
-      <p class="trust-line">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-        Trusted by facilities teams across the UK
-      </p>
+      <!-- Real CFM accreditations only — do not add others -->
+      <div class="trust-strip">
+        <p>Accredited &amp; certified</p>
+        <ul class="badges">
+          <li>IWFM member</li>
+          <li>ISO 9001 (UKAS)</li>
+          <li>SafeContractor Approved</li>
+          <li>PlanetMark Certified</li>
+        </ul>
+      </div>
     </div>
 
     <!-- ============ FORM ============ -->
@@ -314,8 +357,8 @@ footer a:hover{text-decoration:underline}
       <div class="form-sticky">
         <div class="form-card" id="lead-form-card">
           <form id="lead-form" novalidate>
-            <h2 id="form-heading">Get your free facilities review</h2>
-            <p class="form-sub">Tell us about your building — we'll come back within one working day.</p>
+            <h2 id="form-heading">Get a Quote</h2>
+            <p class="form-sub">Tell us about your building — we'll get back to you within one working day.</p>
 
             <div class="field">
               <label for="name">Name</label>
@@ -324,21 +367,21 @@ footer a:hover{text-decoration:underline}
             </div>
 
             <div class="field">
-              <label for="company">Company</label>
+              <label for="company">Company Name</label>
               <input type="text" id="company" name="company" autocomplete="organization" required>
               <p class="error-msg" id="company-error">Please enter your company name.</p>
             </div>
 
             <div class="field">
-              <label for="email">Work email</label>
+              <label for="email">Email</label>
               <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
               <p class="error-msg" id="email-error">Please enter a valid email address.</p>
             </div>
 
             <div class="field">
-              <label for="phone">Phone</label>
+              <label for="phone">Telephone</label>
               <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required>
-              <p class="error-msg" id="phone-error">Please enter your phone number.</p>
+              <p class="error-msg" id="phone-error">Please enter your telephone number.</p>
             </div>
 
             <div class="field">
@@ -364,16 +407,17 @@ footer a:hover{text-decoration:underline}
             <input type="hidden" name="utm_campaign" id="utm_campaign">
             <input type="hidden" name="li_fat_id" id="li_fat_id">
 
-            <button type="submit" class="submit-btn" id="submit-btn">Book my free review</button>
+            <button type="submit" class="submit-btn" id="submit-btn">Get my quote</button>
             <p class="microcopy">No obligation. No sales pressure.</p>
-            <p class="form-error" id="form-error" role="alert">Sorry — something went wrong sending your details. Please try again, or email us directly at <a href="mailto:hello@care-facilities.com">hello@care-facilities.com</a>.</p>
+            <p class="form-error" id="form-error" role="alert">Sorry — something went wrong sending your details. Please try again, or call us on <a href="tel:+442038144370">020 3814 4370</a>.</p>
           </form>
 
           <!-- Success state (shown by JS after successful submit) -->
           <div class="form-success" id="form-success" hidden role="status">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
             <h2>Thank you — we've got it.</h2>
-            <p>One of our team will come back to you within one working day to arrange your free facilities review.</p>
+            <p>One of our team will get back to you within one working day with your quote.</p>
+            <p class="call-now">Or call us now on <a href="tel:+442038144370">020 3814 4370</a></p>
           </div>
         </div>
       </div>
@@ -419,7 +463,7 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <!-- ============ What we handle ============ -->
-  <section class="services">
+  <section class="band">
     <div class="container reveal">
       <h2 class="section-title">What we handle</h2>
       <p class="section-lead">Everything your buildings need to run safely and smoothly — under one contract, with one point of contact.</p>
@@ -458,33 +502,25 @@ footer a:hover{text-decoration:underline}
     </div>
   </section>
 
-  <!-- ============ Why FMs choose CFM ============ -->
+  <!-- ============ Nationwide, accredited, accountable ============ -->
   <section>
     <div class="container reveal">
-      <h2 class="section-title">Why facilities managers choose CFM</h2>
-      <div class="proof-grid">
-        <div class="proof"><span class="stat">Fewer emails</span><p>Contractor chasing disappears from your inbox — it all routes through your CFM manager.</p></div>
-        <div class="proof"><span class="stat">Zero missed deadlines</span><p>Statutory compliance tracked and actioned before it's due. No exposure, no scramble.</p></div>
-        <div class="proof"><span class="stat">Predictable costs</span><p>Agreed budgets and consolidated supplier spend — no more invoice surprises.</p></div>
-        <div class="proof"><span class="stat">One monthly report</span><p>Works, spend and compliance in a single document you can forward straight to the board.</p></div>
-      </div>
-      <div class="testimonials">
-        <!-- PLACEHOLDER TESTIMONIAL — replace quote, name, role and company with a real client reference -->
-        <figure class="testimonial">
-          <blockquote>"[Placeholder testimonial — e.g. 'Within three months CFM had taken over 30 supplier relationships. My inbox has never been quieter.']"</blockquote>
-          <cite><strong>[Client name]</strong> — [Role], [Company]</cite>
-        </figure>
-        <!-- PLACEHOLDER TESTIMONIAL — replace quote, name, role and company with a real client reference -->
-        <figure class="testimonial">
-          <blockquote>"[Placeholder testimonial — e.g. 'Our compliance file went from a worry to a non-event. Every certificate is current and I can prove it in seconds.']"</blockquote>
-          <cite><strong>[Client name]</strong> — [Role], [Company]</cite>
-        </figure>
+      <h2 class="section-title">Nationwide, accredited, accountable</h2>
+      <div class="nationwide">
+        <p>CFM works with organisations of all sizes across the UK — from single buildings to multi-site portfolios — with the same promise everywhere: <strong>one point of contact, and everything handled.</strong></p>
+        <p>Our work is backed by independently verified standards, so you can put us in front of your board with confidence.</p>
+        <ul class="badges-lg">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>IWFM member</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>ISO 9001 (UKAS)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>SafeContractor Approved</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>PlanetMark Certified</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="services">
+  <section class="band">
     <div class="container reveal">
       <h2 class="section-title">Frequently asked questions</h2>
       <div class="faq-list">
@@ -494,7 +530,7 @@ footer a:hover{text-decoration:underline}
         </details>
         <details>
           <summary>What types of buildings and sectors do you cover?</summary>
-          <p>Offices, care and healthcare settings, mixed-use commercial and multi-site portfolios across the UK. If you're not sure whether your building fits, ask in the form — the review is free either way.</p>
+          <p>We work with organisations of all sizes across the UK — offices, commercial and mixed-use buildings, and multi-site portfolios. If you're not sure whether your building fits, ask in the form — the review is free either way.</p>
         </details>
         <details>
           <summary>How does pricing work?</summary>
@@ -516,29 +552,56 @@ footer a:hover{text-decoration:underline}
   <section class="cta-band">
     <div class="container reveal">
       <h2>Let's simplify your building management.</h2>
-      <p>Book your free facilities review — no obligation, no sales pressure.</p>
-      <a class="cta-btn" href="#lead-form-card">Book my free review</a>
+      <p class="cta-sub">Get a quote — no obligation, no sales pressure.</p>
+      <a class="cta-btn" href="#lead-form-card">Get my quote</a>
+      <p class="cta-call">Or call <a href="tel:+442038144370">020 3814 4370</a></p>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="container footer-inner">
-    <span>© Care Facilities Management Ltd</span>
-    <span><a href="mailto:hello@care-facilities.com">hello@care-facilities.com</a> &nbsp;·&nbsp; <a href="tel:+441234567890">01234 567 890</a></span>
-    <!-- Replace # with the real privacy policy URL -->
-    <a href="#">Privacy policy</a>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>Care Facilities Management</h3>
+        <p>Nationwide Facilities Management Company</p>
+      </div>
+      <div>
+        <h3>Head office</h3>
+        <p>Swaker Yard – Office 3,<br>2b Theobald St,<br>Borehamwood, WD6 4SE</p>
+      </div>
+      <div>
+        <h3>Birmingham office</h3>
+        <p>1 Victoria Square,<br>Birmingham, B1 1BD</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>Tel: <a href="tel:+442038144370">020 3814 4370</a><br>Email: <a href="mailto:info@care-facilities.com">info@care-facilities.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Care Facilities Management. All Rights Reserved.</span>
+      <!-- Replace # with the real privacy policy URL -->
+      <a href="#">Privacy policy</a>
+    </div>
   </div>
 </footer>
 
 <!-- Sticky mobile CTA bar — appears once the user scrolls past the form -->
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
-  <a href="#lead-form-card">Book my free review</a>
+  <div class="sticky-cta-inner">
+    <a class="quote-btn" href="#lead-form-card">Get a quote</a>
+    <a class="call-btn" href="tel:+442038144370" aria-label="Call 020 3814 4370">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
 </div>
 
 <script>
 (function () {
   'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- 1. Capture ad attribution from the URL into hidden fields ---------- */
   var params = new URLSearchParams(window.location.search);
@@ -618,18 +681,49 @@ footer a:hover{text-decoration:underline}
         form.hidden = true;
         successEl.hidden = false;
         hideStickyCta();
-        successEl.focus && successEl.setAttribute('tabindex', '-1');
+        successEl.setAttribute('tabindex', '-1');
         successEl.focus();
       })
       .catch(function (err) {
         console.error('Lead submit failed:', err);
         formError.classList.add('show');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Book my free review';
+        submitBtn.textContent = 'Get my quote';
       });
   });
 
-  /* ---------- 3. Sticky mobile CTA — show after scrolling past the form ---------- */
+  /* ---------- 3. Smooth-scroll with easing for all anchor/CTA jumps ---------- */
+  function smoothScrollTo(targetY, duration) {
+    var startY = window.pageYOffset;
+    var diff = targetY - startY;
+    var start;
+    function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function step(ts) {
+      if (start === undefined) start = ts;
+      var t = Math.min((ts - start) / duration, 1);
+      window.scrollTo({ top: startY + diff * easeInOutCubic(t), behavior: 'instant' });
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var hash = link.getAttribute('href');
+    if (hash === '#') return; // placeholder links (e.g. privacy policy) — leave alone
+    var target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    var top = target.getBoundingClientRect().top + window.pageYOffset - 16;
+    if (reduceMotion) {
+      window.scrollTo(0, top); // jump, no animation
+    } else {
+      smoothScrollTo(top, 600);
+    }
+  });
+
+  /* ---------- 4. Sticky mobile CTA — show after scrolling past the form ---------- */
   var stickyCta = document.getElementById('sticky-cta');
   var formCard = document.getElementById('lead-form-card');
   var formSubmitted = false;
@@ -637,6 +731,8 @@ footer a:hover{text-decoration:underline}
   function hideStickyCta() {
     formSubmitted = true;
     stickyCta.classList.remove('show');
+    stickyCta.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('has-sticky-cta');
   }
 
   if ('IntersectionObserver' in window) {
@@ -652,19 +748,20 @@ footer a:hover{text-decoration:underline}
     ctaObserver.observe(formCard);
   }
 
-  /* ---------- 4. Scroll-in reveal animations (skipped for reduced motion) ---------- */
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ---------- 5. Fade-up scroll-in reveals with a small stagger (GPU-friendly:
+                  transform/opacity only; skipped entirely for reduced motion) ---------- */
   var reveals = document.querySelectorAll('.reveal');
   if (reduceMotion || !('IntersectionObserver' in window)) {
     reveals.forEach(function (el) { el.classList.add('visible'); });
   } else {
     var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
+      entries
+        .filter(function (entry) { return entry.isIntersecting; })
+        .forEach(function (entry, i) {
+          entry.target.style.transitionDelay = (i * 80) + 'ms';
           entry.target.classList.add('visible');
           revealObserver.unobserve(entry.target);
-        }
-      });
+        });
     }, { threshold: 0.12 });
     reveals.forEach(function (el) { revealObserver.observe(el); });
   }
