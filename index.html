@@ -60,13 +60,11 @@ header{background:#fff;border-bottom:1px solid var(--border)}
   padding:10px 24px;max-width:1180px;margin:0 auto;
 }
 .logo{display:flex;align-items:center;gap:12px;min-width:0}
-/* CLIENT: drop your logo file in as "logo.png" next to this HTML file.
-   It's the blue circular "CF" mark + "Care Facilities Management" wordmark
-   from the header of care-facilities.com. Recommended height ~48px (use a
-   2x export for retina). If the file is missing, the text fallback below shows. */
-.logo img{height:48px;width:auto;display:block}
-.logo-fallback{display:none;font-weight:700;color:var(--navy);font-size:1.05rem;line-height:1.15}
-.logo-fallback small{display:block;font-weight:500;color:var(--muted);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+/* logo.png is the CFM circular "CF" mark (transparent PNG, 2x for retina),
+   shown beside the wordmark text. If the file is missing the text still shows. */
+.logo img{height:44px;width:auto;display:block}
+.logo-text{font-weight:700;color:var(--navy);font-size:1.05rem;line-height:1.15}
+.logo-text small{display:block;font-weight:500;color:var(--muted);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
 .header-contact{font-size:.92rem;color:var(--muted);text-align:right;white-space:nowrap}
 .header-contact a{color:var(--navy);text-decoration:none;font-weight:600}
 .header-contact a:hover{color:var(--accent)}
@@ -275,9 +273,9 @@ footer a:hover{text-decoration:underline}
   .hero-intro h1{font-size:2rem}
   section{padding:44px 0}
   .header-contact .email,.header-contact .sep{display:none} /* keep the top bar to one line on small screens */
-  .logo img{height:40px}
-  .logo-fallback{font-size:.92rem}
-  .logo-fallback small{display:none}
+  .logo img{height:36px}
+  .logo-text{font-size:.92rem}
+  .logo-text small{display:none}
   .sticky-cta{display:block}
   body.has-sticky-cta footer{padding-bottom:110px}
 }
@@ -287,13 +285,10 @@ footer a:hover{text-decoration:underline}
 
 <header>
   <div class="header-inner">
-    <!-- Logo: top-left only, deliberately NOT a link (no exit points on this landing page).
-         CLIENT: save your logo (blue circular CF mark + wordmark from care-facilities.com)
-         as "logo.png" alongside this file — see note in the CSS above. -->
+    <!-- Logo: top-left only, deliberately NOT a link (no exit points on this landing page) -->
     <div class="logo">
-      <img src="logo.png" alt="Care Facilities Management" width="220" height="48"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-fallback">Care Facilities Management<small>Nationwide Facilities Management</small></span>
+      <img src="logo.png" alt="" width="51" height="44" onerror="this.style.display='none'">
+      <span class="logo-text">Care Facilities Management<small>Nationwide Facilities Management</small></span>
     </div>
     <p class="header-contact">
       Call: <a href="tel:+442038144370">020 3814 4370</a><span class="sep">|</span><a class="email" href="mailto:info@care-facilities.com">info@care-facilities.com</a>
