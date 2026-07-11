@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b14">
+<title>Round Pot — the night-out kitty</title>
+<meta name="description" content="Everyone chips in before the night out. Rounds get paid from the pot. Nobody gets away without paying.">
+<style>
+  :root{
+    --bg:#0b0b14;
+    --bg2:#12121f;
+    --card:#181828;
+    --card2:#1f1f33;
+    --line:#2a2a44;
+    --text:#f2f0ff;
+    --muted:#9d9ab8;
+    --accent:#f5b942;      /* golden pint */
+    --accent2:#ff5d8f;     /* neon pink */
+    --good:#3fd68f;
+    --bad:#ff6161;
+    --radius:16px;
+    font-size:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(255,93,143,.12), transparent 60%),
+      radial-gradient(900px 500px at 10% -5%, rgba(245,185,66,.10), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+  }
+  #app{
+    width:100%;
+    max-width:480px;
+    padding:20px 16px calc(150px + env(safe-area-inset-bottom));
+  }
+
+  /* ---------- shared ---------- */
+  h1{font-size:1.9rem;letter-spacing:-.02em}
+  h2{font-size:1.15rem;margin-bottom:10px}
+  .muted{color:var(--muted)}
+  .small{font-size:.82rem}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:14px;
+  }
+  button{
+    font:inherit;color:inherit;border:none;cursor:pointer;border-radius:12px;
+    transition:transform .06s ease, filter .15s ease;
+  }
+  button:active{transform:scale(.97)}
+  .btn{
+    display:block;width:100%;padding:15px;font-weight:700;font-size:1.05rem;
+    background:linear-gradient(135deg,var(--accent),#e89c1e);
+    color:#1a1200;border-radius:14px;
+  }
+  .btn:disabled{filter:grayscale(.8) brightness(.6);cursor:not-allowed}
+  .btn-outline{
+    display:block;width:100%;padding:13px;font-weight:600;
+    background:transparent;border:1.5px solid var(--line);color:var(--text);
+    border-radius:14px;
+  }
+  .btn-danger-text{background:none;color:var(--bad);font-weight:600;padding:12px;width:100%}
+  input[type=text],input[type=number]{
+    width:100%;padding:13px 14px;font:inherit;font-size:1rem;
+    background:var(--bg2);border:1.5px solid var(--line);border-radius:12px;color:var(--text);
+    outline:none;
+  }
+  input:focus{border-color:var(--accent)}
+  label{display:block;font-size:.85rem;color:var(--muted);margin:14px 0 6px;font-weight:600}
+  .row{display:flex;gap:10px;align-items:center}
+  .grow{flex:1}
+  .money{font-variant-numeric:tabular-nums}
+
+  /* ---------- header ---------- */
+  header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .logo{
+    width:44px;height:44px;border-radius:12px;flex:none;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex;align-items:center;justify-content:center;font-size:24px;
+  }
+  header .sub{font-size:.85rem;color:var(--muted)}
+
+  /* ---------- pot hero ---------- */
+  .pot-hero{
+    text-align:center;padding:26px 16px 22px;
+    background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--line);border-radius:20px;margin-bottom:14px;
+    position:relative;overflow:hidden;
+  }
+  .pot-hero .amount{
+    font-size:3rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;
+    background:linear-gradient(135deg,#ffe29a,var(--accent));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .pot-hero .amount.low{background:linear-gradient(135deg,#ffb3b3,var(--bad));-webkit-background-clip:text;background-clip:text}
+  .pot-hero .lbl{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+  .meter{
+    height:10px;border-radius:99px;background:var(--bg2);
+    border:1px solid var(--line);overflow:hidden;margin:16px auto 8px;max-width:280px;
+  }
+  .meter>div{
+    height:100%;border-radius:99px;
+    background:linear-gradient(90deg,var(--accent2),var(--accent));
+    transition:width .4s ease;
+  }
+  .pot-stats{display:flex;justify-content:center;gap:22px;margin-top:10px;font-size:.85rem;color:var(--muted)}
+  .pot-stats b{color:var(--text);display:block;font-size:1rem}
+  .warn-banner{
+    margin-top:12px;padding:9px 12px;border-radius:10px;font-size:.85rem;font-weight:600;
+    background:rgba(255,97,97,.12);color:#ffb3b3;border:1px solid rgba(255,97,97,.35);
+  }
+
+  /* ---------- people ---------- */
+  .person{
+    display:flex;align-items:center;gap:12px;padding:12px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .person:last-child{border-bottom:none}
+  .avatar{
+    width:40px;height:40px;border-radius:50%;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:.95rem;color:#14101f;
+  }
+  .p-name{font-weight:700}
+  .p-sub{font-size:.8rem;color:var(--muted)}
+  .chip{
+    padding:7px 13px;border-radius:99px;font-size:.8rem;font-weight:700;flex:none;
+  }
+  .chip.paid{background:rgba(63,214,143,.15);color:var(--good);border:1px solid rgba(63,214,143,.4)}
+  .chip.owes{background:rgba(255,97,97,.14);color:var(--bad);border:1px solid rgba(255,97,97,.45);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+  .p-remove{background:none;color:var(--muted);font-size:1.1rem;padding:6px;flex:none}
+
+  /* ---------- rounds feed ---------- */
+  .round-item{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);align-items:center}
+  .round-item:last-child{border-bottom:none}
+  .round-emoji{
+    width:38px;height:38px;border-radius:10px;background:var(--bg2);flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:19px;border:1px solid var(--line);
+  }
+  .round-amt{font-weight:800;font-size:1.02rem}
+  .round-amt.in{color:var(--good)}
+  .round-amt.out{color:var(--text)}
+
+  /* ---------- action bar ---------- */
+  .actionbar{
+    position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,transparent,rgba(11,11,20,.92) 40%);
+    pointer-events:none;
+  }
+  .actionbar .inner{display:flex;gap:10px;width:100%;max-width:448px;pointer-events:auto}
+  .fab{
+    flex:1;padding:16px;font-weight:800;font-size:1.05rem;border-radius:16px;
+    background:linear-gradient(135deg,var(--accent),#e89c1e);color:#1a1200;
+    box-shadow:0 6px 24px rgba(245,185,66,.35);
+  }
+  .fab.alt{
+    flex:none;width:auto;padding:16px 18px;
+    background:var(--card2);color:var(--text);border:1px solid var(--line);box-shadow:none;
+  }
+
+  /* ---------- sheet / modal ---------- */
+  .sheet-backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);
+    display:flex;align-items:flex-end;justify-content:center;z-index:50;
+    animation:fadeIn .18s ease;
+  }
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .sheet{
+    width:100%;max-width:480px;background:var(--bg2);
+    border:1px solid var(--line);border-bottom:none;
+    border-radius:22px 22px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom));
+    animation:slideUp .22s ease;max-height:88dvh;overflow-y:auto;
+  }
+  @keyframes slideUp{from{transform:translateY(40px);opacity:.4}to{transform:translateY(0);opacity:1}}
+  .sheet h2{font-size:1.3rem}
+  .sheet .handle{width:42px;height:4px;border-radius:99px;background:var(--line);margin:0 auto 16px}
+  .quick-amts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .quick-amts button{
+    padding:9px 14px;background:var(--card2);border:1px solid var(--line);
+    border-radius:10px;font-weight:700;font-size:.95rem;color:var(--text);
+  }
+  .quick-amts button.sel{border-color:var(--accent);color:var(--accent)}
+  .buyer-pick{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .buyer-pick button{
+    padding:9px 14px;background:var(--card2);border:1px solid var(--line);
+    border-radius:99px;font-weight:600;font-size:.9rem;color:var(--text);
+  }
+  .buyer-pick button.sel{border-color:var(--accent2);color:var(--accent2);background:rgba(255,93,143,.1)}
+
+  /* ---------- setup ---------- */
+  .setup-people{margin-top:10px}
+  .setup-person{
+    display:flex;align-items:center;gap:10px;padding:9px 12px;margin-bottom:8px;
+    background:var(--card2);border:1px solid var(--line);border-radius:12px;font-weight:600;
+  }
+  .empty-hint{
+    text-align:center;padding:22px 10px;color:var(--muted);font-size:.9rem;line-height:1.5;
+  }
+
+  /* ---------- settle ---------- */
+  .settle-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+  .settle-row:last-child{border-bottom:none}
+  .settle-row .val{font-weight:800}
+  .val.pos{color:var(--good)}
+  .val.neg{color:var(--bad)}
+
+  .toast{
+    position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:99;
+    background:var(--card2);border:1px solid var(--line);border-radius:12px;
+    padding:11px 18px;font-weight:600;font-size:.92rem;
+    box-shadow:0 8px 30px rgba(0,0,0,.5);animation:fadeIn .2s ease;max-width:90%;
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* =========================================================
+   Round Pot — the night-out kitty
+   Everyone chips in before the night. Rounds come out of
+   the pot. Nobody "forgets their wallet" ever again.
+   All data lives in localStorage on this phone.
+   ========================================================= */
+
+const LS_KEY = 'roundpot-v1';
+const AVATAR_COLOURS = ['#f5b942','#ff5d8f','#5dd0ff','#3fd68f','#c08bff','#ff9d5d','#7de37d','#ff7ab8'];
+const ROUND_EMOJIS = ['🍺','🍻','🍸','🍷','🥃','🍹','🥂','🍾'];
+
+let state = load();
+
+function load(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return null;
+}
+function save(){ localStorage.setItem(LS_KEY, JSON.stringify(state)); }
+function uid(){ return Math.random().toString(36).slice(2,9); }
+function money(n){
+  const neg = n < -0.004;
+  return (neg?'-':'') + '£' + Math.abs(n).toFixed(2);
+}
+function esc(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function initials(name){
+  return name.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+}
+function avatarColour(i){ return AVATAR_COLOURS[i % AVATAR_COLOURS.length]; }
+
+/* ---------- derived figures ---------- */
+function paidIn(p){ return p.contributions.filter(c=>c.paid).reduce((s,c)=>s+c.amount,0); }
+function owed(p){ return p.contributions.filter(c=>!c.paid).reduce((s,c)=>s+c.amount,0); }
+function totalCollected(){ return state.people.reduce((s,p)=>s+paidIn(p),0); }
+function totalSpent(){ return state.rounds.reduce((s,r)=>s+r.amount,0); }
+function potBalance(){ return totalCollected() - totalSpent(); }
+function totalPledged(){ return state.people.reduce((s,p)=>s+paidIn(p)+owed(p),0); }
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+const app = document.getElementById('app');
+
+function render(){
+  if(!state){ renderSetup(); }
+  else{ renderNight(); }
+}
+
+/* ---------- setup screen ---------- */
+let setupDraft = { name:'', buyIn:20, people:[] };
+
+function renderSetup(){
+  app.innerHTML = `
+    <header>
+      <div class="logo">🍻</div>
+      <div>
+        <h1>Round Pot</h1>
+        <div class="sub">The night-out kitty. No freeloaders.</div>
+      </div>
+    </header>
+
+    <div class="card">
+      <h2>How it works</h2>
+      <div class="muted small" style="line-height:1.6">
+        1. Everyone chips in <b style="color:var(--text)">before</b> the night starts.<br>
+        2. Rounds get paid straight out of the pot.<br>
+        3. Anyone who hasn't paid in is named and shamed on screen.<br>
+        4. Leftover money gets split back at the end. Sorted.
+      </div>
+    </div>
+
+    <div class="card">
+      <label>Name the night (optional)</label>
+      <input type="text" id="su-name" placeholder="e.g. Dave's birthday carnage" value="${esc(setupDraft.name)}" maxlength="40">
+
+      <label>Buy-in per person</label>
+      <div class="row">
+        <span style="font-size:1.3rem;font-weight:700">£</span>
+        <input type="number" id="su-buyin" inputmode="decimal" min="1" step="1" value="${setupDraft.buyIn}" class="grow">
+      </div>
+      <div class="quick-amts" id="su-quick">
+        ${[10,20,30,50].map(a=>`<button data-amt="${a}" class="${setupDraft.buyIn===a?'sel':''}">£${a}</button>`).join('')}
+      </div>
+
+      <label>Who's coming?</label>
+      <div class="row">
+        <input type="text" id="su-person" placeholder="Add a name…" maxlength="24" class="grow" autocomplete="off">
+        <button class="btn" style="width:auto;padding:13px 18px" id="su-add">Add</button>
+      </div>
+      <div class="setup-people" id="su-people">
+        ${setupDraft.people.map((n,i)=>`
+          <div class="setup-person">
+            <div class="avatar" style="background:${avatarColour(i)};width:32px;height:32px;font-size:.8rem">${esc(initials(n))}</div>
+            <span class="grow">${esc(n)}</span>
+            <button class="p-remove" data-rm="${i}" aria-label="Remove ${esc(n)}">✕</button>
+          </div>`).join('')}
+        ${setupDraft.people.length===0?'<div class="empty-hint">Add at least 2 people to start the pot.</div>':''}
+      </div>
+    </div>
+
+    ${setupDraft.people.length>=2?`
+      <div class="card" style="text-align:center">
+        <div class="muted small">Pot when everyone's paid in</div>
+        <div style="font-size:1.9rem;font-weight:800;color:var(--accent)" class="money">
+          ${money(setupDraft.buyIn * setupDraft.people.length)}
+        </div>
+        <div class="muted small">${setupDraft.people.length} people × £${setupDraft.buyIn}</div>
+      </div>`:''}
+
+    <button class="btn" id="su-start" ${setupDraft.people.length<2?'disabled':''}>Start the night 🍻</button>
+  `;
+
+  const nameEl = document.getElementById('su-name');
+  const buyinEl = document.getElementById('su-buyin');
+  const personEl = document.getElementById('su-person');
+
+  nameEl.oninput = e => setupDraft.name = e.target.value;
+  buyinEl.oninput = e => { setupDraft.buyIn = Math.max(0, parseFloat(e.target.value)||0); refreshSetupSoft(); };
+  document.getElementById('su-quick').onclick = e=>{
+    const b = e.target.closest('button[data-amt]'); if(!b) return;
+    setupDraft.buyIn = +b.dataset.amt; renderSetup();
+  };
+  const addPerson = ()=>{
+    const n = personEl.value.trim();
+    if(!n) return;
+    if(setupDraft.people.some(p=>p.toLowerCase()===n.toLowerCase())){ toast('They\'re already on the list'); return; }
+    setupDraft.people.push(n);
+    personEl.value='';
+    renderSetup();
+    document.getElementById('su-person').focus();
+  };
+  document.getElementById('su-add').onclick = addPerson;
+  personEl.onkeydown = e => { if(e.key==='Enter'){ e.preventDefault(); addPerson(); } };
+  document.getElementById('su-people').onclick = e=>{
+    const b = e.target.closest('button[data-rm]'); if(!b) return;
+    setupDraft.people.splice(+b.dataset.rm,1); renderSetup();
+  };
+  document.getElementById('su-start').onclick = startNight;
+
+  function refreshSetupSoft(){ /* keep focus while typing buy-in; totals refresh on next full render */ }
+}
+
+function startNight(){
+  if(setupDraft.people.length<2 || setupDraft.buyIn<=0) return;
+  state = {
+    name: setupDraft.name.trim(),
+    buyIn: setupDraft.buyIn,
+    startedAt: Date.now(),
+    people: setupDraft.people.map(n=>({
+      id: uid(), name:n,
+      contributions:[{ amount: setupDraft.buyIn, paid:false, label:'Buy-in' }]
+    })),
+    rounds: []
+  };
+  save(); render();
+}
+
+/* ---------- night screen ---------- */
+function renderNight(){
+  const bal = potBalance();
+  const pledged = totalPledged();
+  const collected = totalCollected();
+  const spent = totalSpent();
+  const pct = pledged>0 ? Math.max(0, Math.min(100, (bal/pledged)*100)) : 0;
+  const unpaid = state.people.filter(p=>owed(p)>0.004);
+  const low = collected>0 && bal <= pledged*0.2;
+
+  app.innerHTML = `
+    <header>
+      <div class="logo">🍻</div>
+      <div class="grow">
+        <h1 style="font-size:1.4rem">${esc(state.name||'Round Pot')}</h1>
+        <div class="sub">${state.people.length} on the pot · buy-in £${state.buyIn}</div>
+      </div>
+    </header>
+
+    <div class="pot-hero">
+      <div class="lbl">In the pot</div>
+      <div class="amount money ${bal<0?'low':''}">${money(bal)}</div>
+      <div class="meter"><div style="width:${pct}%"></div></div>
+      <div class="pot-stats">
+        <div><b class="money">${money(collected)}</b>collected</div>
+        <div><b class="money">${money(spent)}</b>on rounds</div>
+        <div><b>${state.rounds.length}</b>round${state.rounds.length===1?'':'s'}</div>
+      </div>
+      ${bal<0?`<div class="warn-banner">Pot's overdrawn — time for a top-up 🚨</div>`
+        : low?`<div class="warn-banner">Pot's running low — maybe a top-up soon?</div>`:''}
+    </div>
+
+    ${unpaid.length?`
+      <div class="card" style="border-color:rgba(255,97,97,.5)">
+        <h2 style="color:var(--bad)">⚠️ Still owe the pot</h2>
+        <div class="muted small" style="margin-bottom:4px">Tap "Paid up" once you've seen their money.</div>
+        ${unpaid.map(p=>personRow(p,true)).join('')}
+      </div>`:''}
+
+    <div class="card">
+      <h2>The crew</h2>
+      ${state.people.map(p=>personRow(p,false)).join('')}
+      <button class="btn-outline" style="margin-top:12px" id="add-person">+ Add a latecomer</button>
+    </div>
+
+    <div class="card">
+      <h2>Rounds</h2>
+      ${state.rounds.length===0
+        ? '<div class="empty-hint">No rounds yet. Get them in! 🍺</div>'
+        : [...state.rounds].reverse().map(roundRow).join('')}
+    </div>
+
+    <div class="card">
+      <button class="btn-outline" id="share">📋 Copy summary for the group chat</button>
+      <button class="btn-outline" id="settle" style="margin-top:10px">🏁 End the night &amp; settle up</button>
+    </div>
+
+    <div class="actionbar">
+      <div class="inner">
+        <button class="fab" id="log-round">🍺 Pay for a round</button>
+        <button class="fab alt" id="top-up">💸 Top up</button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('log-round').onclick = openRoundSheet;
+  document.getElementById('top-up').onclick = openTopUpSheet;
+  document.getElementById('add-person').onclick = openAddPersonSheet;
+  document.getElementById('settle').onclick = openSettleSheet;
+  document.getElementById('share').onclick = copySummary;
+
+  app.querySelectorAll('[data-mark-paid]').forEach(b=>{
+    b.onclick = ()=>{
+      const p = state.people.find(x=>x.id===b.dataset.markPaid);
+      if(!p) return;
+      p.contributions.forEach(c=>c.paid=true);
+      save(); render();
+      toast(`${p.name} has paid up ✅`);
+    };
+  });
+}
+
+function personRow(p, inWarnCard){
+  const idx = state.people.indexOf(p);
+  const oweAmt = owed(p);
+  const paid = paidIn(p);
+  return `
+    <div class="person">
+      <div class="avatar" style="background:${avatarColour(idx)}">${esc(initials(p.name))}</div>
+      <div class="grow">
+        <div class="p-name">${esc(p.name)}</div>
+        <div class="p-sub money">${money(paid)} in${oweAmt>0.004?` · owes ${money(oweAmt)}`:''}</div>
+      </div>
+      ${oweAmt>0.004
+        ? `<button class="chip owes" data-mark-paid="${p.id}">Owes ${money(oweAmt)} — Paid up?</button>`
+        : `<span class="chip paid">Paid ✓</span>`}
+    </div>`;
+}
+
+function roundRow(r,i){
+  const buyer = state.people.find(p=>p.id===r.buyerId);
+  const t = new Date(r.time);
+  const hh = String(t.getHours()).padStart(2,'0'), mm = String(t.getMinutes()).padStart(2,'0');
+  return `
+    <div class="round-item">
+      <div class="round-emoji">${ROUND_EMOJIS[(state.rounds.length-1-i) % ROUND_EMOJIS.length]}</div>
+      <div class="grow">
+        <div style="font-weight:600">${esc(r.note||'Round of drinks')}</div>
+        <div class="p-sub">${hh}:${mm}${buyer?` · ${esc(buyer.name)} went to the bar`:''}</div>
+      </div>
+      <div class="round-amt out money">−${money(r.amount).replace('£','£')}</div>
+    </div>`;
+}
+
+/* =========================================================
+   SHEETS
+   ========================================================= */
+function openSheet(html){
+  closeSheet();
+  const bd = document.createElement('div');
+  bd.className='sheet-backdrop';
+  bd.innerHTML = `<div class="sheet"><div class="handle"></div>${html}</div>`;
+  bd.addEventListener('click', e=>{ if(e.target===bd) closeSheet(); });
+  document.body.appendChild(bd);
+  return bd;
+}
+function closeSheet(){ document.querySelectorAll('.sheet-backdrop').forEach(el=>el.remove()); }
+
+/* ----- pay for a round ----- */
+function openRoundSheet(){
+  let buyerId = null;
+  const bd = openSheet(`
+    <h2>🍺 Pay for a round</h2>
+    <div class="muted small">Comes straight out of the pot.</div>
+
+    <label>How much was it?</label>
+    <div class="row">
+      <span style="font-size:1.3rem;font-weight:700">£</span>
+      <input type="number" id="rd-amt" inputmode="decimal" min="0" step="0.01" placeholder="0.00" class="grow" autofocus>
+    </div>
+    <div class="quick-amts" id="rd-quick">
+      ${[10,15,20,25,30,40].map(a=>`<button data-amt="${a}">£${a}</button>`).join('')}
+    </div>
+
+    <label>What was it? (optional)</label>
+    <input type="text" id="rd-note" placeholder="e.g. 6 pints + a lime soda for Gaz" maxlength="60">
+
+    <label>Who went to the bar? (optional)</label>
+    <div class="buyer-pick" id="rd-buyer">
+      ${state.people.map(p=>`<button data-id="${p.id}">${esc(p.name)}</button>`).join('')}
+    </div>
+
+    <div style="margin-top:20px">
+      <button class="btn" id="rd-save">Take it from the pot</button>
+    </div>
+  `);
+  const amtEl = bd.querySelector('#rd-amt');
+  bd.querySelector('#rd-quick').onclick = e=>{
+    const b = e.target.closest('button[data-amt]'); if(!b) return;
+    amtEl.value = b.dataset.amt;
+    bd.querySelectorAll('#rd-quick button').forEach(x=>x.classList.toggle('sel',x===b));
+  };
+  bd.querySelector('#rd-buyer').onclick = e=>{
+    const b = e.target.closest('button[data-id]'); if(!b) return;
+    const already = b.classList.contains('sel');
+    bd.querySelectorAll('#rd-buyer button').forEach(x=>x.classList.remove('sel'));
+    if(!already){ b.classList.add('sel'); buyerId = b.dataset.id; } else buyerId = null;
+  };
+  bd.querySelector('#rd-save').onclick = ()=>{
+    const amt = parseFloat(amtEl.value);
+    if(!amt || amt<=0){ toast('Enter how much the round cost'); return; }
+    state.rounds.push({
+      id: uid(), amount: Math.round(amt*100)/100,
+      note: bd.querySelector('#rd-note').value.trim(),
+      buyerId, time: Date.now()
+    });
+    save(); closeSheet(); render();
+    const bal = potBalance();
+    toast(bal<0 ? 'Round logged — pot is overdrawn! 🚨' : `Round logged. ${money(bal)} left in the pot.`);
+  };
+  setTimeout(()=>amtEl.focus(),50);
+}
+
+/* ----- top up ----- */
+function openTopUpSheet(){
+  const bd = openSheet(`
+    <h2>💸 Top up the pot</h2>
+    <div class="muted small">Everyone chips in again. They'll show as owing until you mark them paid.</div>
+
+    <label>Top-up per person</label>
+    <div class="row">
+      <span style="font-size:1.3rem;font-weight:700">£</span>
+      <input type="number" id="tu-amt" inputmode="decimal" min="0" step="1" placeholder="0" class="grow" value="10">
+    </div>
+    <div class="quick-amts" id="tu-quick">
+      ${[5,10,15,20].map(a=>`<button data-amt="${a}" class="${a===10?'sel':''}">£${a}</button>`).join('')}
+    </div>
+
+    <div class="muted small" id="tu-total" style="margin-top:14px"></div>
+
+    <div style="margin-top:16px">
+      <button class="btn" id="tu-save">Add the top-up</button>
+    </div>
+  `);
+  const amtEl = bd.querySelector('#tu-amt');
+  const totalEl = bd.querySelector('#tu-total');
+  const refresh = ()=>{
+    const a = parseFloat(amtEl.value)||0;
+    totalEl.textContent = a>0 ? `That's ${money(a*state.people.length)} more in the pot once everyone's paid (${state.people.length} × ${money(a)}).` : '';
+  };
+  amtEl.oninput = refresh; refresh();
+  bd.querySelector('#tu-quick').onclick = e=>{
+    const b = e.target.closest('button[data-amt]'); if(!b) return;
+    amtEl.value = b.dataset.amt; refresh();
+    bd.querySelectorAll('#tu-quick button').forEach(x=>x.classList.toggle('sel',x===b));
+  };
+  bd.querySelector('#tu-save').onclick = ()=>{
+    const a = parseFloat(amtEl.value);
+    if(!a || a<=0){ toast('Enter a top-up amount'); return; }
+    state.people.forEach(p=>p.contributions.push({ amount: Math.round(a*100)/100, paid:false, label:'Top-up' }));
+    save(); closeSheet(); render();
+    toast(`Top-up added — collect ${money(a)} from everyone 💸`);
+  };
+}
+
+/* ----- add latecomer ----- */
+function openAddPersonSheet(){
+  const bd = openSheet(`
+    <h2>Add a latecomer</h2>
+    <div class="muted small">They owe the £${state.buyIn} buy-in like everyone else. No exceptions.</div>
+    <label>Name</label>
+    <input type="text" id="ap-name" placeholder="Who turned up?" maxlength="24" autocomplete="off">
+    <label>Their buy-in</label>
+    <div class="row">
+      <span style="font-size:1.3rem;font-weight:700">£</span>
+      <input type="number" id="ap-amt" inputmode="decimal" min="0" step="1" value="${state.buyIn}" class="grow">
+    </div>
+    <div style="margin-top:18px"><button class="btn" id="ap-save">Add them</button></div>
+  `);
+  bd.querySelector('#ap-save').onclick = ()=>{
+    const n = bd.querySelector('#ap-name').value.trim();
+    const a = parseFloat(bd.querySelector('#ap-amt').value)||0;
+    if(!n){ toast('Give them a name'); return; }
+    if(state.people.some(p=>p.name.toLowerCase()===n.toLowerCase())){ toast('They\'re already on the pot'); return; }
+    state.people.push({ id:uid(), name:n, contributions: a>0?[{amount:Math.round(a*100)/100,paid:false,label:'Buy-in'}]:[] });
+    save(); closeSheet(); render();
+    toast(`${n} added — they owe ${money(a)} 👀`);
+  };
+  setTimeout(()=>bd.querySelector('#ap-name').focus(),50);
+}
+
+/* ----- settle up ----- */
+function openSettleSheet(){
+  const bal = potBalance();
+  const spent = totalSpent();
+  const collected = totalCollected();
+  const payers = state.people.filter(p=>paidIn(p)>0.004);
+  const share = payers.length ? bal/payers.length : 0;
+  const unpaid = state.people.filter(p=>owed(p)>0.004);
+
+  const bd = openSheet(`
+    <h2>🏁 Settle up</h2>
+    <div class="card" style="margin-top:14px">
+      <div class="settle-row"><span class="muted">Collected</span><span class="val money">${money(collected)}</span></div>
+      <div class="settle-row"><span class="muted">Spent on ${state.rounds.length} round${state.rounds.length===1?'':'s'}</span><span class="val money">−${money(spent)}</span></div>
+      <div class="settle-row"><span><b>Left in the pot</b></span><span class="val money ${bal>=0?'pos':'neg'}">${money(bal)}</span></div>
+    </div>
+
+    ${bal>0.004 && payers.length?`
+      <div class="card">
+        <h2>Split it back</h2>
+        <div class="muted small" style="margin-bottom:6px">Everyone who paid in gets ${money(share)} back:</div>
+        ${payers.map(p=>`<div class="settle-row"><span>${esc(p.name)}</span><span class="val pos money">${money(share)}</span></div>`).join('')}
+      </div>`:''}
+
+    ${bal<-0.004?`
+      <div class="card" style="border-color:rgba(255,97,97,.5)">
+        <h2 style="color:var(--bad)">Pot's short by ${money(-bal)}</h2>
+        <div class="muted small">Split between ${state.people.length}: <b style="color:var(--text)">${money(-bal/state.people.length)} each</b> to square it.</div>
+      </div>`:''}
+
+    ${unpaid.length?`
+      <div class="card" style="border-color:rgba(255,97,97,.5)">
+        <h2 style="color:var(--bad)">🚨 Never paid up</h2>
+        ${unpaid.map(p=>`<div class="settle-row"><span>${esc(p.name)}</span><span class="val neg money">still owes ${money(owed(p))}</span></div>`).join('')}
+      </div>`:''}
+
+    <button class="btn-outline" id="st-share" style="margin-top:6px">📋 Copy summary for the group chat</button>
+    <button class="btn-danger-text" id="st-reset" style="margin-top:8px">Wipe this night &amp; start a new pot</button>
+  `);
+  bd.querySelector('#st-share').onclick = copySummary;
+  bd.querySelector('#st-reset').onclick = ()=>{
+    if(!confirm('Wipe this night and start fresh? This can\'t be undone.')) return;
+    localStorage.removeItem(LS_KEY);
+    state = null;
+    setupDraft = { name:'', buyIn:20, people:[] };
+    closeSheet(); render();
+  };
+}
+
+/* ----- share summary ----- */
+function copySummary(){
+  const bal = potBalance();
+  const unpaid = state.people.filter(p=>owed(p)>0.004);
+  const lines = [
+    `🍻 ${state.name||'Round Pot'}`,
+    `Pot: ${money(potBalance())} left (${money(totalCollected())} in, ${money(totalSpent())} on ${state.rounds.length} rounds)`,
+    ``,
+    ...state.people.map(p=>{
+      const o = owed(p);
+      return `${o>0.004?'🔴':'🟢'} ${p.name}: ${money(paidIn(p))} in${o>0.004?` — STILL OWES ${money(o)}`:''}`;
+    })
+  ];
+  if(unpaid.length) lines.push('', `👀 ${unpaid.map(p=>p.name).join(', ')} — pay up!`);
+  const text = lines.join('\n');
+  (navigator.clipboard?.writeText(text) || Promise.reject()).then(
+    ()=>toast('Summary copied — paste it in the group chat 📋'),
+    ()=>{ prompt('Copy this:', text); }
+  );
+}
+
+/* ----- toast ----- */
+let toastTimer;
+function toast(msg){
+  document.querySelectorAll('.toast').forEach(t=>t.remove());
+  const t = document.createElement('div');
+  t.className='toast'; t.textContent=msg;
+  document.body.appendChild(t);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.remove(), 2600);
+}
+
+render();
+</script>
+</body>
+</html>
