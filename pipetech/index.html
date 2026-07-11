@@ -30,6 +30,7 @@
     "addressCountry": "GB"
   },
   "areaServed": ["Hornchurch", "Upminster", "Emerson Park", "Gidea Park", "Romford"],
+  "hasMap": "https://maps.app.goo.gl/Gxqv775XQoV8rjzRA",
   "employee": {
     "@type": "Person",
     "name": "Sam",
@@ -233,15 +234,10 @@ section{padding:4.5rem 0}
 @media(min-width:860px){.area-inner{grid-template-columns:1fr 1fr}}
 .area p{max-width:34rem}
 .area strong{color:var(--ink);font-weight:600}
-.map-placeholder{
-  aspect-ratio:4/3;border-radius:6px;border:1px dashed var(--brass);
-  background:var(--bg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;
-  text-align:center;padding:1.5rem;
+.map-embed{
+  aspect-ratio:4/3;width:100%;border:1px solid var(--line);border-radius:6px;
+  background:var(--bg);display:block;
 }
-.map-placeholder svg{color:var(--brass)}
-.map-placeholder span{font-family:var(--heading);font-weight:600;color:var(--ink);font-size:.95rem}
-.map-placeholder small{color:var(--muted);font-size:.82rem;max-width:22rem}
 
 /* ---------- Contact / footer ---------- */
 .contact{background:var(--ink);color:#B9B4AD;padding-bottom:0}
@@ -409,8 +405,7 @@ section{padding:4.5rem 0}
         <cite>Tommy P.</cite>
       </article>
     </div>
-    <!-- OWNER TODO: Swap this href for your exact Google Business Profile reviews link if you have it -->
-    <a class="reviews-link" href="https://www.google.com/search?q=PipeTech+Solutions+Hornchurch+reviews" target="_blank" rel="noopener">
+    <a class="reviews-link" href="https://maps.app.goo.gl/Gxqv775XQoV8rjzRA" target="_blank" rel="noopener">
       Read all our reviews on Google
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
     </a>
@@ -449,16 +444,7 @@ section{padding:4.5rem 0}
       <hr class="rule" style="margin-bottom:1.6rem">
       <p>We're based on Nelmes Close in Hornchurch and work across <strong>Hornchurch, Upminster, Emerson Park, Gidea Park and Romford</strong>, plus the surrounding Essex and East London areas. If you're nearby and not sure whether we cover you, just call — it's a quick answer.</p>
     </div>
-    <!--
-      OWNER TODO: Replace this placeholder with your Google Maps embed.
-      In Google Maps, search your business > Share > Embed a map > copy the
-      <iframe> code and paste it in place of the div below.
-    -->
-    <div class="map-placeholder">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-      <span>Hornchurch RM11</span>
-      <small>Map embed goes here — see the comment in the page code for how to add it.</small>
-    </div>
+    <iframe class="map-embed" src="https://maps.google.com/maps?q=PipeTech%20Solutions%20Hornchurch&z=13&output=embed" title="Map showing PipeTech Solutions in Hornchurch RM11" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
   </div>
 </section>
 
@@ -514,8 +500,8 @@ section{padding:4.5rem 0}
 </main>
 
 <script>
-// Hide gallery images until real photos replace the REPLACE-ME placeholders,
-// so the styled "Photo coming soon" tile shows instead of broken-image alt text.
+// If a gallery photo fails to load, hide it so the styled "Photo coming
+// soon" tile shows instead of broken-image alt text.
 document.querySelectorAll('.gallery-grid img').forEach(function (img) {
   var hide = function () { img.style.visibility = 'hidden'; };
   img.addEventListener('error', hide);
