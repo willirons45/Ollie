@@ -1,0 +1,654 @@
+/* ==========================================================================
+   Union Home Improvements Ltd — styles.css
+   Palette (sampled from the company logo — keep this scheme):
+     navy      #1E3869  primary
+     gold      #D9B56C  accents / secondary buttons (use sparingly)
+     ink       #111318  near-black, logo text / footer
+     off-white #F7F8FA  backgrounds
+     slate     #454C65  the logo JPEG's solid background colour
+   ========================================================================== */
+
+:root {
+  --navy: #1E3869;
+  --navy-deep: #16294d;
+  --gold: #D9B56C;
+  --gold-deep: #c39c50;
+  --ink: #111318;
+  --bg: #F7F8FA;
+  --slate: #454C65;
+  --white: #ffffff;
+  --text: #2a2f3a;
+  --muted: #5b6272;
+  --line: #e4e7ee;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow: 0 10px 30px rgba(17, 19, 24, 0.08);
+  --shadow-lift: 0 16px 40px rgba(17, 19, 24, 0.14);
+  --font: "Avenir Next", "Segoe UI", "Helvetica Neue", system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.5em;
+  color: var(--ink);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+p { margin: 0 0 1em; }
+ul { margin: 0; padding: 0; list-style: none; }
+address { font-style: normal; }
+
+a { color: var(--navy); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+.container {
+  width: min(1120px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.container--narrow { width: min(760px, 100% - 2.5rem); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  padding: 0.8em 1.5em;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn svg { width: 1.1em; height: 1.1em; flex: none; }
+
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn:active { transform: translateY(0); }
+
+/* Primary CTA: near-black text on gold — highest contrast pairing of the scheme */
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: var(--gold-deep); }
+
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-deep); color: var(--white); }
+
+/* Outline button for use on navy backgrounds */
+.btn-outline { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.55); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Outline button for light backgrounds */
+.btn-outline-navy { background: transparent; color: var(--navy); border-color: var(--navy); }
+.btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+
+.btn-lg { padding: 0.95em 1.9em; font-size: 1.05rem; }
+.btn-sm { padding: 0.6em 1.2em; font-size: 0.92rem; }
+.btn-block { width: 100%; }
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.cta-row--center { justify-content: center; }
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 14px rgba(17, 19, 24, 0.25);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 0.7rem;
+}
+
+.header-inner--minimal { justify-content: space-between; }
+
+.brand { display: inline-flex; align-items: center; text-decoration: none; }
+
+/* The logo JPEG has a solid slate-navy (#454C65) background, so it sits in a chip
+   of the exact same colour to hide the rectangle edges. Swap for a transparent
+   PNG/SVG from the client when available and this chip can go. */
+.brand-mark {
+  display: block;
+  background: var(--slate);
+  border-radius: 10px;
+  padding: 4px 10px;
+  line-height: 0;
+}
+
+.brand-mark img {
+  height: 46px;
+  width: auto;   /* never stretch the logo */
+}
+
+/* Text fallback shown only if the logo image is missing (e.g. before the client
+   drops assets/logo.jpeg in) — script.js toggles .logo-missing on the brand link */
+.brand-fallback {
+  display: none;
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.brand-fallback em { font-style: normal; color: var(--gold); display: block; font-size: 0.62em; letter-spacing: 0.14em; }
+.brand.logo-missing .brand-mark { display: none; }
+.brand.logo-missing .brand-fallback { display: block; }
+
+.site-nav { display: none; gap: 1.6rem; margin-inline: auto; }
+.site-nav a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.site-nav a:hover { color: var(--gold); }
+
+.header-cta { display: flex; align-items: center; gap: 1.1rem; margin-left: auto; }
+
+.header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.98rem;
+  white-space: nowrap;
+}
+.header-phone svg { width: 1.05em; height: 1.05em; color: var(--gold); }
+.header-phone:hover { color: var(--gold); }
+
+/* Hide the header quote button on small screens — the sticky mobile bar covers it */
+.header-cta .btn { display: none; }
+
+@media (min-width: 700px) {
+  .header-cta .btn { display: inline-flex; }
+}
+
+@media (min-width: 920px) {
+  .site-nav { display: flex; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(1100px 500px at 85% -10%, rgba(217, 181, 108, 0.16), transparent 60%),
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 70%);
+  color: var(--white);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+}
+
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(2rem, 5.4vw, 3.4rem);
+  max-width: 18ch;
+  margin-bottom: 0.4em;
+}
+
+.hero-eyebrow {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  margin-bottom: 1.1em;
+}
+
+.hero-sub {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1.02rem, 2.2vw, 1.18rem);
+  max-width: 56ch;
+  margin-bottom: 1.8em;
+}
+
+.hero .cta-row { margin-bottom: 1.6rem; }
+
+.hero--compact { padding-block: clamp(2.5rem, 6vw, 4rem); text-align: center; }
+.hero--compact h1 { margin-inline: auto; }
+.hero--compact .hero-sub { margin-inline: auto; margin-bottom: 1.2em; }
+.hero--compact .google-badge { margin-inline: auto; }
+
+/* ---------- Google badge ---------- */
+.google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(217, 181, 108, 0.45);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.5em 1em;
+  border-radius: 999px;
+  margin: 0;
+  width: fit-content;
+}
+
+.google-badge .stars { color: var(--gold); letter-spacing: 0.12em; font-size: 0.95em; }
+
+.google-badge--dark {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.google-badge--footer {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(217, 181, 108, 0.4);
+  margin-top: 0.6rem;
+}
+
+/* ---------- Trust bar ---------- */
+.trust-bar {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.trust-bar-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem 1rem;
+  padding-block: 0.85rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+@media (min-width: 700px) {
+  .trust-bar-inner { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.section--tint { background: #eef0f5; }
+
+.section-head { max-width: 62ch; margin-bottom: clamp(1.8rem, 4vw, 3rem); }
+.section-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); }
+.section-head p { color: var(--muted); font-size: 1.08rem; margin: 0; }
+
+.section-subhead { font-size: 1.35rem; margin-bottom: 1.2rem; }
+
+/* ---------- Services ---------- */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 1.7rem 1.6rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+
+.service-card h3 { font-size: 1.28rem; margin-bottom: 0.35em; }
+.service-card p { color: var(--muted); font-size: 0.99rem; flex: 1; }
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  background: rgba(30, 56, 105, 0.08);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+}
+.service-icon svg { width: 30px; height: 30px; }
+
+.service-link {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--navy);
+  margin-top: 0.4rem;
+}
+.service-link:hover { color: var(--gold-deep); }
+
+/* Roofing — flagship card, visually largest */
+.service-card--featured {
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 80%);
+  border: none;
+  color: var(--white);
+  padding: 2.2rem 2rem;
+}
+.service-card--featured h3 { color: var(--white); font-size: 1.7rem; }
+.service-card--featured p { color: rgba(255, 255, 255, 0.85); font-size: 1.05rem; }
+.service-card--featured .service-icon { background: rgba(217, 181, 108, 0.18); color: var(--gold); width: 60px; height: 60px; }
+.service-card--featured .service-icon svg { width: 36px; height: 36px; }
+.service-card--featured .service-link { color: var(--gold); }
+.service-card--featured .service-link:hover { color: var(--white); }
+
+.service-flag {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+@media (min-width: 640px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card--featured { grid-column: span 2; }
+}
+
+/* On wide screens the flagship Roofing card spans 2x2, so the six cards fill
+   a clean 3x3 grid with no orphan card on the last row */
+@media (min-width: 980px) {
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  .service-card--featured { grid-column: span 2; grid-row: span 2; justify-content: center; }
+  .service-card--featured p { flex: 0 0 auto; max-width: 52ch; }
+  .service-card--featured h3 { font-size: 2rem; }
+}
+
+/* ---------- Gallery ---------- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+@media (min-width: 560px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 920px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.gallery-grid--compact { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+
+.gallery-item {
+  margin: 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.gallery-item img,
+.photo-placeholder {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(45deg, #d4d7de 0 14px, #cbcfd8 14px 28px);
+  color: #6b7180;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+}
+
+.gallery-item figcaption {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: var(--ink);
+}
+
+.gallery-grid--compact figcaption { font-size: 0.8rem; padding: 0.5rem 0.6rem; }
+
+/* ---------- Areas ---------- */
+.areas-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+@media (min-width: 720px) { .areas-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.area-card {
+  background: var(--white);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.4rem;
+  box-shadow: var(--shadow);
+}
+.area-card h3 { font-size: 1.2rem; }
+.area-card p { color: var(--muted); margin: 0; font-size: 0.98rem; }
+
+/* ---------- Reviews ---------- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+@media (min-width: 720px) { .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.review-card {
+  margin: 0;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+.review-card .stars { color: var(--gold); letter-spacing: 0.15em; font-size: 1.05rem; display: block; margin-bottom: 0.7rem; }
+.review-card p { color: var(--text); font-size: 0.99rem; }
+.review-card footer { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+
+.reviews-link-wrap { text-align: center; margin: 1.8rem 0 0; }
+
+/* ---------- Accreditations ---------- */
+.accreditations { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.accreditations-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding-block: 1.6rem;
+}
+
+.accreditations-row img {
+  height: 52px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.accreditations-row img:hover { filter: none; opacity: 1; }
+
+/* ---------- Final CTA ---------- */
+.final-cta {
+  background:
+    radial-gradient(900px 400px at 15% 110%, rgba(217, 181, 108, 0.16), transparent 60%),
+    linear-gradient(200deg, var(--navy) 0%, var(--navy-deep) 75%);
+  color: var(--white);
+  text-align: center;
+  padding-block: clamp(3.5rem, 8vw, 5.5rem);
+}
+
+.final-cta h2 { color: var(--white); font-size: clamp(1.8rem, 4.2vw, 2.6rem); }
+.final-cta p { color: rgba(255, 255, 255, 0.85); font-size: 1.15rem; margin-bottom: 2rem; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.96rem;
+}
+
+.site-footer a { color: var(--gold); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 6vw, 4rem) 2rem;
+}
+
+@media (min-width: 720px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; } }
+
+.footer-brand { color: var(--white); font-size: 1.15rem; }
+.site-footer h4 { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.9em; }
+.site-footer li { margin-bottom: 0.4em; }
+.site-footer address p { margin-bottom: 0.5em; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-block: 1.2rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+.footer-bottom p { margin: 0.2em 0; }
+
+.site-footer--slim { text-align: center; margin-top: 0; }
+.site-footer--slim .footer-bottom { border-top: none; padding-block: 1.6rem; }
+
+/* ---------- Sticky mobile action bar ---------- */
+.mobile-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0.6rem max(0.8rem, env(safe-area-inset-left)) max(0.6rem, env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 -4px 20px rgba(17, 19, 24, 0.15);
+}
+
+.mobile-bar .btn { padding: 0.75em 0.5em; font-size: 0.98rem; }
+
+/* Reserve space so the bar never covers the footer */
+body { padding-bottom: 4.4rem; }
+
+@media (min-width: 700px) {
+  .mobile-bar { display: none; }
+  body { padding-bottom: 0; }
+}
+
+/* ---------- Quote page ---------- */
+.quote-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.form-row { margin-bottom: 1.1rem; }
+
+.form-row label {
+  display: block;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+  font-size: 0.98rem;
+}
+
+.form-row label span { color: var(--gold-deep); }
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7em 0.9em;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--navy);
+  outline-offset: 1px;
+  border-color: var(--navy);
+}
+
+.form-row textarea { resize: vertical; min-height: 120px; }
+
+.form-error {
+  margin-top: 1rem;
+  background: #fdecec;
+  border: 1px solid #f3b8b8;
+  color: #8c2323;
+  border-radius: 10px;
+  padding: 0.8em 1em;
+  font-size: 0.95rem;
+}
+
+.form-success { text-align: center; padding: 1.5rem 0.5rem; }
+
+.form-success-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: rgba(30, 56, 105, 0.08);
+  color: var(--navy);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.form-success h2 { font-size: 1.5rem; }
+.form-success p { color: var(--muted); margin: 0; }
+
+.quote-alt-cta { text-align: center; margin-top: 2.5rem; }
+.quote-alt-cta p { font-weight: 700; color: var(--ink); font-size: 1.1rem; margin-bottom: 1rem; }
+
+/* ---------- Scroll-in animations (CSS only) ----------
+   Uses scroll-driven animations where supported; browsers without support
+   simply show content immediately. Disabled for prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise-in both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}

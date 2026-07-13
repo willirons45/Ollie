@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Free Roofing Quote — Union Home Improvements Ltd</title>
+  <meta name="description" content="Request your free roofing or exterior improvement quote from Union Home Improvements Ltd, Hornchurch. 30+ years of experience, fully insured, 5.0★ on Google. We usually respond within 24 hours.">
+
+  <!-- Open Graph — this page gets pasted into Facebook job posts, so the preview matters. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Get a Free Roofing Quote — Union Home Improvements">
+  <meta property="og:description" content="Free quotes across Essex, South East London &amp; Dartford. 30+ years of experience, fully insured, 5.0★ rated on Google. We usually respond within 24 hours.">
+  <!-- TODO before launch: replace PLACEHOLDER-DOMAIN with the real deployed domain, and add a real og-image (1200x630, e.g. best job photo + logo) to assets/ -->
+  <meta property="og:url" content="https://PLACEHOLDER-DOMAIN/quote.html">
+  <meta property="og:image" content="https://PLACEHOLDER-DOMAIN/assets/og-image.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3869'/%3E%3Cpath d='M6 18 L16 9 L26 18' fill='none' stroke='%23D9B56C' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11 22 L18 16 L25 22' fill='none' stroke='%23D9B56C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="quote-page">
+
+  <header class="site-header">
+    <div class="container header-inner header-inner--minimal">
+      <a class="brand" href="index.html" aria-label="Union Home Improvements Ltd — back to home">
+        <!-- Logo is a JPEG with a solid slate-navy background (#454C65) — kept on a matching chip.
+             IDEAL FIX: request a transparent PNG/SVG logo from the client. -->
+        <span class="brand-mark"><img class="logo-img" src="assets/logo.jpeg" alt="Union Home Improvements Ltd logo"></span>
+        <span class="brand-fallback">UNION <em>HOME IMPROVEMENTS LTD</em></span>
+      </a>
+      <a class="header-phone" href="tel:+447463828948">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.9 15.9 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z" fill="currentColor"/></svg>
+        <span>+44 7463 828948</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Compact hero -->
+    <section class="hero hero--compact">
+      <div class="container">
+        <h1>Get Your Free Roofing Quote</h1>
+        <p class="hero-sub">We usually respond within 24 hours.</p>
+        <p class="google-badge" aria-label="Rated 5.0 stars on Google">
+          <span class="stars" aria-hidden="true">★★★★★</span> 5.0 ★ Rated on Google
+        </p>
+      </div>
+    </section>
+
+    <section class="trust-bar" aria-label="Why choose us">
+      <div class="container trust-bar-inner">
+        <span>30+ Years Experience</span>
+        <span>Fully Insured</span>
+        <span>Free Quotes</span>
+        <span>5.0★ on Google</span>
+      </div>
+    </section>
+
+    <!-- Quote form -->
+    <section class="section" id="quote-form">
+      <div class="container container--narrow">
+        <div class="quote-card">
+          <!-- FORMSPREE SETUP: create a form at https://formspree.io and replace PLACEHOLDER
+               in the action URL below with the real form ID (e.g. https://formspree.io/f/abcdwxyz).
+               Without JavaScript the form still submits directly to Formspree (their hosted
+               thank-you page is shown), so nothing breaks if JS fails. -->
+          <form id="quoteForm" action="https://formspree.io/f/PLACEHOLDER" method="POST" novalidate>
+            <div class="form-row">
+              <label for="name">Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone <span aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            </div>
+            <div class="form-row">
+              <label for="postcode">Postcode <span aria-hidden="true">*</span></label>
+              <input type="text" id="postcode" name="postcode" autocomplete="postal-code" required>
+            </div>
+            <div class="form-row">
+              <label for="service">Service needed</label>
+              <select id="service" name="service">
+                <option value="Roofing" selected>Roofing</option>
+                <option value="Repointing">Repointing</option>
+                <option value="Rendering">Rendering</option>
+                <option value="Fencing">Fencing</option>
+                <option value="Damp Proofing">Damp Proofing</option>
+                <option value="Exterior Painting">Exterior Painting</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="message">Tell us about your project <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="New quote request — website">
+            <!-- Honeypot spam trap (Formspree convention) -->
+            <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn-gold btn-lg btn-block">Request My Free Quote</button>
+            <p class="form-error" id="formError" hidden>Sorry — something went wrong sending your request. Please try again, or call us on <a href="tel:+447463828948">+44 7463 828948</a>.</p>
+          </form>
+          <div class="form-success" id="formSuccess" hidden>
+            <span class="form-success-icon" aria-hidden="true">✓</span>
+            <h2>Thanks — we'll be in touch shortly</h2>
+            <p>We usually respond within 24 hours. If it's urgent, call us on <a href="tel:+447463828948">+44 7463 828948</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent jobs + call CTAs -->
+    <section class="section section--tint">
+      <div class="container container--narrow">
+        <h2 class="section-subhead">Recent jobs</h2>
+        <!-- REAL PHOTOS NEEDED: same job photos as index.html, pulled from the client's
+             Facebook posts. Replace each placeholder div with an <img>. -->
+        <div class="gallery-grid gallery-grid--compact">
+          <figure class="gallery-item">
+            <div class="photo-placeholder">PHOTO 1</div>
+            <figcaption>Roof replacement — Hornchurch</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <div class="photo-placeholder">PHOTO 2</div>
+            <figcaption>Flat roof — Romford</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <div class="photo-placeholder">PHOTO 3</div>
+            <figcaption>Repointing — Upminster</figcaption>
+          </figure>
+        </div>
+
+        <div class="quote-alt-cta">
+          <p>Rather talk it through?</p>
+          <div class="cta-row cta-row--center">
+            <a class="btn btn-navy btn-lg" href="tel:+447463828948">Call +44 7463 828948</a>
+            <a class="btn btn-outline-navy btn-lg" href="https://wa.me/447463828948?text=Hi%2C%20I%27d%20like%20a%20free%20quote" target="_blank" rel="noopener">WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--slim">
+    <div class="container footer-bottom">
+      <p>Union Home Improvements Ltd · 181-183 Station Ln, Hornchurch RM12 6LL · <a href="tel:+447463828948">+44 7463 828948</a> · <a href="mailto:unionhomeimprovementsltd@gmail.com">unionhomeimprovementsltd@gmail.com</a></p>
+      <p>© 2026 Union Home Improvements Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile action bar -->
+  <div class="mobile-bar">
+    <a class="btn btn-navy" href="tel:+447463828948">Call Now</a>
+    <a class="btn btn-gold" href="#quote-form">Get a Quote</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
