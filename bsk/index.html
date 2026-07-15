@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSK Builders Ltd — Roofing, Extensions &amp; Refurbishment | Upminster, Essex</title>
+<meta name="description" content="BSK Builders Ltd — roofing and construction in Upminster, serving London &amp; Essex. 25+ years' experience, rated 9.5/10 on Checkatrade, free estimates. Call 07427 827199.">
+<meta property="og:title" content="BSK Builders Ltd — Roofing, Extensions &amp; Refurbishment | Upminster, Essex">
+<meta property="og:description" content="Checkatrade-vetted builders with 25+ years in the trade. Roofing, extensions, lofts and full refurbishments across London &amp; Essex. Free estimates — call 07427 827199.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1c2228">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "BSK Builders Ltd",
+  "telephone": "+447427827199",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Upminster",
+    "addressRegion": "Essex",
+    "addressCountry": "GB"
+  },
+  "areaServed": ["Upminster", "Hornchurch", "Rainham", "Romford", "Grays", "Ilford", "Barking", "East London", "North London", "Essex"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "9.5",
+    "bestRating": "10",
+    "reviewCount": "22"
+  }
+}
+</script>
+<style>
+/* ============================================================
+   BSK Builders — one-page site. No frameworks, no build step.
+   Aesthetic: industrial site signage / builder's hoarding board.
+   ============================================================ */
+:root{
+  --ink:#1c2228;
+  --ink-soft:#39434d;
+  --zinc:#5a6672;
+  --paper:#f6f5f2;
+  --white:#ffffff;
+  --amber:#f2b01e;
+  --amber-deep:#d99a08;
+  --line:#e3e1db;
+  --radius:6px;
+  --tape:repeating-linear-gradient(-45deg, var(--amber) 0 14px, var(--ink) 14px 28px);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-padding-top:84px}
+@media (prefers-reduced-motion: no-preference){
+  html{scroll-behavior:smooth}
+}
+body{
+  font-family:'Barlow',system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  color:var(--ink-soft);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+h1,h2,h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;text-transform:uppercase;
+  line-height:1.02;color:var(--ink);
+  letter-spacing:.01em;
+}
+h2{font-size:clamp(34px,4.6vw,52px)}
+h3{font-size:24px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* --- Eyebrow labels: stripe chip + condensed uppercase --- */
+.eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;font-size:15px;
+  color:var(--zinc);margin-bottom:14px;
+}
+.eyebrow::before{
+  content:"";width:34px;height:10px;flex:none;border-radius:2px;
+  /* finer bands than the section tape so stripes stay legible at chip size */
+  background:repeating-linear-gradient(-45deg, var(--amber) 0 6px, var(--ink) 6px 12px);
+}
+.on-dark .eyebrow{color:var(--amber)}
+
+/* --- Hazard-tape section dividers --- */
+.tape{height:10px;background:var(--tape)}
+
+/* --- Dark sections get a faint blueprint grid --- */
+.dark{
+  background-color:var(--ink);
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:52px 52px;
+  color:#c7ced5;
+}
+.dark h1,.dark h2,.dark h3{color:var(--white)}
+
+/* --- Buttons --- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:18px;
+  padding:13px 24px;border-radius:var(--radius);
+  text-decoration:none;transition:background .18s,border-color .18s,color .18s;
+  white-space:nowrap;
+}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:var(--amber-deep)}
+.btn-ghost{border:2px solid rgba(255,255,255,.35);color:var(--white)}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.site-head{
+  position:sticky;top:0;z-index:50;
+  background:var(--ink);border-bottom:3px solid var(--amber);
+}
+.head-in{display:flex;align-items:center;gap:26px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.logo-mark{
+  width:42px;height:42px;flex:none;border-radius:4px;
+  background:var(--amber);color:var(--ink);
+  display:grid;place-items:center;
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:19px;
+  letter-spacing:.02em;
+}
+.brand-text{line-height:1.15}
+.brand-text strong{
+  display:block;color:var(--white);
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  text-transform:uppercase;font-size:19px;letter-spacing:.03em;
+}
+.brand-text span{
+  font-size:12.5px;color:#9aa5af;
+  text-transform:uppercase;letter-spacing:.1em;
+}
+.head-nav{display:flex;gap:24px}
+.head-nav a{
+  color:#c7ced5;text-decoration:none;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;font-size:16px;
+}
+.head-nav a:hover{color:var(--amber)}
+.head-call{padding:10px 18px;font-size:17px}
+.call-short{display:none}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{padding:84px 0 72px}
+.hero h1{font-size:clamp(52px,8vw,92px);max-width:14ch}
+.hero .am{color:var(--amber)}
+.hero .lead{max-width:600px;margin:22px 0 30px;font-size:18.5px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px}
+
+.trust-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-top:56px;padding-top:34px;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.trust-cell .t-num{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:44px;line-height:1;color:var(--amber);
+}
+.trust-cell .t-label{
+  margin-top:6px;font-size:14px;color:#9aa5af;
+  text-transform:uppercase;letter-spacing:.08em;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+}
+
+/* ============================================================
+   Services — staggered "brick course" grid
+   ============================================================ */
+.services{padding:76px 0 84px}
+.services .intro{max-width:620px;margin:14px 0 38px}
+.brick-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.svc-card{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px 22px;
+}
+/* Brick coursing: rows of 3 / 3 / 2 with offset joints */
+.svc-card:nth-child(1){grid-column:span 4}
+.svc-card:nth-child(2){grid-column:span 4}
+.svc-card:nth-child(3){grid-column:span 4}
+.svc-card:nth-child(4){grid-column:span 3}
+.svc-card:nth-child(5){grid-column:span 5}
+.svc-card:nth-child(6){grid-column:span 4}
+.svc-card:nth-child(7){grid-column:span 5}
+.svc-card:nth-child(8){grid-column:span 7}
+.tick{
+  width:26px;height:26px;border-radius:4px;flex:none;
+  background:var(--amber);color:var(--ink);
+  display:grid;place-items:center;margin-bottom:14px;
+}
+.tick svg{width:14px;height:14px}
+.svc-card h3{margin-bottom:7px}
+.svc-card p{font-size:15.5px;color:var(--zinc)}
+.svc-dark{
+  background-color:var(--ink);border-color:var(--ink);color:#c7ced5;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.svc-dark h3{color:var(--white)}
+.svc-dark p{color:#9aa5af}
+.svc-dark .svc-tel{
+  display:inline-block;margin-top:10px;text-decoration:none;
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:26px;color:var(--amber);letter-spacing:.02em;
+}
+.svc-dark .svc-tel:hover{color:var(--amber-deep)}
+
+/* ============================================================
+   Gallery — Our Work
+   ============================================================ */
+.gallery{padding:76px 0 84px}
+.gallery .intro{max-width:620px;margin:14px 0 38px;color:#9aa5af}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;grid-auto-flow:dense}
+.gal-item{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  background:#242c34;min-height:220px;
+}
+.gal-wide{grid-column:span 2}
+.gal-tall{grid-row:span 2}
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;position:absolute;inset:0;
+  transition:transform .5s ease;
+}
+.gal-item:hover img{transform:scale(1.045)}
+.gal-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:34px 16px 12px;
+  background:linear-gradient(transparent, rgba(28,34,40,.88));
+  color:var(--white);font-size:14.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.07em;
+  font-family:'Barlow Condensed',sans-serif;
+}
+.gal-more{
+  border:2px dashed rgba(255,255,255,.32);background:transparent;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:26px 24px;gap:6px;
+}
+.gal-more strong{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  text-transform:uppercase;font-size:22px;color:var(--white);line-height:1.15;
+}
+.gal-more span{font-size:15px;color:#9aa5af}
+
+/* ============================================================
+   Reviews
+   ============================================================ */
+.reviews{padding:76px 0 84px}
+.scoreboard{
+  background:var(--ink);border-left:8px solid var(--amber);
+  border-radius:var(--radius);color:#c7ced5;
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 40px;
+  padding:28px 32px;margin:34px 0 40px;
+}
+.score-big{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:72px;line-height:1;color:var(--amber);
+}
+.score-big small{font-size:34px;color:#9aa5af;font-weight:700}
+.score-copy{max-width:300px;font-size:15.5px}
+.subscores{display:flex;gap:28px;margin-left:auto}
+.subscores div{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;font-size:14px;color:#9aa5af;
+}
+.subscores strong{display:block;font-size:26px;color:var(--white);font-weight:800}
+
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.rev-card{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;display:flex;flex-direction:column;gap:12px;
+}
+.rev-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rev-type{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  text-transform:uppercase;font-size:18px;color:var(--ink);line-height:1.15;
+}
+.badge{
+  flex:none;background:var(--ink);color:var(--amber);
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;
+  padding:3px 9px;border-radius:4px;letter-spacing:.04em;
+}
+.rev-card blockquote{font-size:15.5px;color:var(--ink-soft)}
+.rev-meta{
+  margin-top:auto;font-size:13px;color:var(--zinc);
+  text-transform:uppercase;letter-spacing:.09em;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+}
+
+/* ============================================================
+   Vetting / About
+   ============================================================ */
+.about{padding:76px 0 84px}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.about-copy p{margin:16px 0 26px;max-width:520px}
+.check-list{
+  list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 20px;
+}
+.check-list li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+.check-list .tick{width:22px;height:22px;margin:2px 0 0}
+.check-list .tick svg{width:12px;height:12px}
+
+.promise{
+  background-color:var(--ink);border-radius:var(--radius);color:#c7ced5;
+  overflow:hidden;
+}
+.promise::before{content:"";display:block;height:10px;background:var(--tape)}
+.promise-in{padding:28px 28px 30px}
+.promise h3{color:var(--white);font-size:28px;margin-bottom:16px}
+.promise ul{list-style:none;display:grid;gap:11px}
+.promise li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px}
+.promise li::before{
+  content:"";width:8px;height:8px;border-radius:2px;flex:none;
+  background:var(--amber);margin-top:7px;
+}
+
+/* ============================================================
+   Areas served
+   ============================================================ */
+.areas{padding:0 0 76px}
+.areas h2{font-size:clamp(26px,3.2vw,36px);margin-bottom:20px}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pills span{
+  background:var(--white);border:1px solid var(--line);border-radius:999px;
+  padding:7px 16px;font-size:15px;color:var(--ink-soft);font-weight:600;
+}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+.contact{padding:80px 0 88px;text-align:center}
+.contact .eyebrow{justify-content:center}
+.contact p{max-width:540px;margin:18px auto 26px}
+.phone-huge{
+  display:inline-block;text-decoration:none;
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:clamp(46px,8vw,84px);line-height:1;color:var(--amber);
+  letter-spacing:.02em;margin-bottom:30px;
+}
+.phone-huge:hover{color:var(--amber-deep)}
+.contact .cta-row{justify-content:center}
+.contact-notes{
+  margin-top:38px;font-size:13.5px;color:#9aa5af;
+  text-transform:uppercase;letter-spacing:.09em;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+}
+.contact-notes b{color:#c7ced5;font-weight:700}
+.dot{margin:0 8px;color:var(--amber)}
+
+/* ============================================================
+   Footer + mobile call bar
+   ============================================================ */
+.site-foot{
+  background:#14191e;color:#8a949e;font-size:14px;
+  padding:22px 0;border-top:1px solid rgba(255,255,255,.08);
+}
+.foot-in{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+.site-foot a{color:#c7ced5;text-decoration:none}
+.site-foot a:hover{color:var(--amber)}
+
+.mobile-call-bar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+}
+.mobile-call-bar a{
+  display:block;text-align:center;text-decoration:none;
+  background:var(--amber);color:var(--ink);
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:.05em;font-size:19px;
+  padding:15px 16px;
+}
+.mobile-call-bar a:active{background:var(--amber-deep)}
+
+/* ============================================================
+   Scroll reveal
+   ============================================================ */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width:900px){
+  .head-nav{display:none}
+  .brick-grid{grid-template-columns:1fr 1fr}
+  .brick-grid .svc-card{grid-column:auto}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-wide{grid-column:span 2}
+  .review-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .subscores{margin-left:0;width:100%}
+}
+@media (max-width:620px){
+  .hero{padding:64px 0 56px}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .cta-row .btn{white-space:normal}
+  .trust-strip{grid-template-columns:1fr 1fr;gap:24px 14px}
+  .brick-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr}
+  .gal-wide{grid-column:auto}
+  .gal-tall{grid-row:auto}
+  .review-grid{grid-template-columns:1fr}
+  .check-list{grid-template-columns:1fr}
+  .call-full{display:none}
+  .call-short{display:inline}
+  .head-call{padding:9px 12px;font-size:16px}
+  .head-call svg{display:none}
+  .head-in{gap:10px}
+  .brand-text span{display:none}
+  .brand-text strong{font-size:16px;white-space:nowrap}
+  .logo-mark{width:38px;height:38px;font-size:17px}
+  .scoreboard{padding:24px 22px}
+  .subscores{flex-wrap:wrap;gap:14px 24px}
+  .mobile-call-bar{display:block}
+  body{padding-bottom:54px}
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (max-width:420px){
+  .brand-text{display:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none !important;animation:none !important}
+  .js .rv{opacity:1;transform:none}
+  .gal-item:hover img{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top" aria-label="BSK Builders Ltd — back to top">
+      <span class="logo-mark" aria-hidden="true">BSK</span>
+      <span class="brand-text">
+        <strong>BSK Builders Ltd</strong>
+        <span>Upminster · Essex</span>
+      </span>
+    </a>
+    <nav class="head-nav" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-amber head-call" href="tel:+447427827199">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      <span class="call-full">Call 07427 827199</span>
+      <span class="call-short">07427 827199</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= Hero ================= -->
+  <section class="hero dark on-dark">
+    <div class="wrap">
+      <p class="eyebrow rv">Roofing &amp; construction · London and Essex</p>
+      <h1 class="rv">Built right. Built to <span class="am">last.</span></h1>
+      <p class="lead rv">From new roofs and repairs to extensions, loft conversions and full refurbishments — BSK Builders is a Checkatrade-vetted team with over 25 years in the trade. Free estimates, fair prices, and a site left tidy every day.</p>
+      <div class="cta-row rv">
+        <a class="btn btn-amber" href="tel:+447427827199">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          Call for a free estimate
+        </a>
+        <a class="btn btn-ghost" href="#services">See our services</a>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-cell rv"><div class="t-num">9.5<span style="font-size:26px;color:#9aa5af">/10</span></div><div class="t-label">Checkatrade · 22 reviews</div></div>
+        <div class="trust-cell rv"><div class="t-num">25+</div><div class="t-label">Years in the trade</div></div>
+        <div class="trust-cell rv"><div class="t-num">12</div><div class="t-label">Vetting checks passed</div></div>
+        <div class="trust-cell rv"><div class="t-num">24hr</div><div class="t-label">Call-out available</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- ================= Services ================= -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <p class="eyebrow rv">What we do</p>
+      <h2 class="rv">One team for the whole job</h2>
+      <p class="intro rv">Whether it's a leaking roof or a full home transformation, you deal with one team from start to finish — domestic and commercial, insurance work undertaken.</p>
+      <div class="brick-grid">
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Roofing</h3>
+          <p>New roofs, repairs and maintenance across all roof types — our headline service.</p>
+        </div>
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Extensions</h3>
+          <p>Single and double-storey extensions, handled from footings to finish.</p>
+        </div>
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Loft Conversions</h3>
+          <p>Turn unused loft space into bedrooms, offices and en-suites.</p>
+        </div>
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Bathroom &amp; Room Refurbishment</h3>
+          <p>Full-room refits completed to a high standard, no corners cut.</p>
+        </div>
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Painting &amp; Decorating</h3>
+          <p>Clean, sharp interior and exterior finishes that last.</p>
+        </div>
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Plastering &amp; Skimming</h3>
+          <p>Smooth, true walls and ceilings, ready for decoration.</p>
+        </div>
+        <div class="svc-card rv">
+          <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>
+          <h3>Landscaping</h3>
+          <p>Patios, paving, fencing and full garden transformations.</p>
+        </div>
+        <div class="svc-card svc-dark rv">
+          <h3>Not sure where to start?</h3>
+          <p>Tell us what you're planning — estimates are free and there's no obligation.</p>
+          <a class="svc-tel" href="tel:+447427827199">07427 827199</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- ================= Gallery ================= -->
+  <section class="gallery dark on-dark" id="work">
+    <div class="wrap">
+      <p class="eyebrow rv">Our work</p>
+      <h2 class="rv">The finish speaks for itself</h2>
+      <p class="intro rv">A small sample of recent jobs — the full photo gallery lives on our Checkatrade profile.</p>
+      <div class="gal-grid">
+        <!--
+          Photo tiles — drop images into bsk/images/ then uncomment.
+          Rules: loading="lazy", real files (never base64), compress
+          anything over ~300KB to max-1200px JPEG before committing.
+
+        <div class="gal-item gal-wide rv">
+          <img src="images/kitchen-refit-1.jpg" loading="lazy" alt="Completed kitchen refit with grey gloss units and marble-effect tiling">
+          <div class="gal-cap">Full kitchen refit</div>
+        </div>
+        <div class="gal-item gal-tall rv">
+          <img src="images/kitchen-refit-2.jpg" loading="lazy" alt="Marble-effect floor and wall tiling in a refitted kitchen">
+          <div class="gal-cap">Flooring &amp; tiling</div>
+        </div>
+        <div class="gal-item rv">
+          <img src="images/kitchen-refit-3.jpg" loading="lazy" alt="Grey gloss kitchen units and worktops with integrated Bosch appliances">
+          <div class="gal-cap">Units &amp; worktops</div>
+        </div>
+        <div class="gal-item rv">
+          <img src="images/kitchen-refit-4.jpg" loading="lazy" alt="Finished kitchen refit showing integrated appliances and tiled splashback">
+          <div class="gal-cap">Full kitchen refit</div>
+        </div>
+        <div class="gal-item rv">
+          <img src="images/kitchen-install.jpg" loading="lazy" alt="White kitchen mid-installation with units being fitted">
+          <div class="gal-cap">Work in progress</div>
+        </div>
+        -->
+        <div class="gal-item gal-more rv">
+          <strong>97+ more job photos</strong>
+          <span>This is a small sample — see the full gallery on our Checkatrade profile.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- ================= Reviews ================= -->
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <p class="eyebrow rv">Reviews</p>
+      <h2 class="rv">What our customers say</h2>
+      <div class="scoreboard rv">
+        <div class="score-big">9.5<small>/10</small></div>
+        <p class="score-copy">Based on 22 verified reviews on Checkatrade · member since 2023</p>
+        <div class="subscores">
+          <div><strong>9.5</strong>Quality of work</div>
+          <div><strong>9.5</strong>Reliability</div>
+          <div><strong>9.5</strong>Communication</div>
+        </div>
+      </div>
+      <div class="review-grid">
+        <article class="rev-card rv">
+          <div class="rev-head"><span class="rev-type">New roof</span><span class="badge">10/10</span></div>
+          <blockquote>&ldquo;They were punctual and worked long days, even at weekends, until the job was finished. We are extremely pleased with our new roof — Buddy and his team did a great job at a fair price.&rdquo;</blockquote>
+          <p class="rev-meta">Verified review · RM14</p>
+        </article>
+        <article class="rev-card rv">
+          <div class="rev-head"><span class="rev-type">Outbuilding &amp; more</span><span class="badge">10/10</span></div>
+          <blockquote>&ldquo;Every once in a while you come across people that go above and beyond your expectations. I initially hired them for one job but have since given them several more. Have definitely found a builder for life.&rdquo;</blockquote>
+          <p class="rev-meta">Verified review · RM13</p>
+        </article>
+        <article class="rev-card rv">
+          <div class="rev-head"><span class="rev-type">Full home refurbishment</span><span class="badge">10/10</span></div>
+          <blockquote>&ldquo;We initially hired BSK to re-fit three bathrooms. The job was completed to the highest standard, no corners cut — so we hired them for the total refurbishment of our new home. Professional, dependable, honest, with great workmanship.&rdquo;</blockquote>
+          <p class="rev-meta">Verified review · RM1</p>
+        </article>
+        <article class="rev-card rv">
+          <div class="rev-head"><span class="rev-type">Home renovation</span><span class="badge">10/10</span></div>
+          <blockquote>&ldquo;Buddy and his team were brilliant and completely transformed the house. They quoted a very reasonable price and did a very quality job. At last I have found an honest builder who I can rely on.&rdquo;</blockquote>
+          <p class="rev-meta">Verified review · RM17</p>
+        </article>
+        <article class="rev-card rv">
+          <div class="rev-head"><span class="rev-type">Rear extension</span><span class="badge">10/10</span></div>
+          <blockquote>&ldquo;We recently used BSK Builders to extend our property. Communication was excellent throughout and they were very quick. Very polite and tidy, good team work and on time. We were very pleased!&rdquo;</blockquote>
+          <p class="rev-meta">Verified review · IG3</p>
+        </article>
+        <article class="rev-card rv">
+          <div class="rev-head"><span class="rev-type">Full kitchen refit</span><span class="badge">10/10</span></div>
+          <blockquote>&ldquo;Reliable, efficient and very courteous. Their work is of the highest standard and everything is left tidy and clean at the end of each day. This is the third job they've done for us in the last year.&rdquo;</blockquote>
+          <p class="rev-meta">Verified review · RM13</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- ================= Vetting / About ================= -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <p class="eyebrow rv">Vetted &amp; verified</p>
+        <h2 class="rv">A builder you can actually check up on</h2>
+        <p class="rv">Anyone can say they're trustworthy — we'd rather you check. As Checkatrade members, BSK Builders has passed up to 12 independent vetting checks, so before we've laid a single brick you already know exactly who you're dealing with.</p>
+        <ul class="check-list">
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Identity verified</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Proof of address</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Financial checks</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Qualifications &amp; accreditations</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>County court judgement checks</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Company trading history</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Director checks</li>
+          <li class="rv"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg></span>Enhanced business check</li>
+        </ul>
+      </div>
+      <aside class="promise rv">
+        <div class="promise-in">
+          <h3>The BSK Promise</h3>
+          <ul>
+            <li>Free, no-obligation estimates</li>
+            <li>Insurance work undertaken</li>
+            <li>Domestic &amp; commercial</li>
+            <li>Cards accepted</li>
+            <li>24-hour call-out</li>
+            <li>Sites left tidy every day</li>
+            <li>£1,000 Checkatrade guarantee (T&amp;Cs apply)</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ================= Areas served ================= -->
+  <section class="areas">
+    <div class="wrap">
+      <h2 class="rv">Based in Upminster, serving London &amp; Essex</h2>
+      <div class="pills rv">
+        <span>Upminster</span>
+        <span>Hornchurch</span>
+        <span>Rainham</span>
+        <span>Romford</span>
+        <span>Grays</span>
+        <span>Ilford</span>
+        <span>Barking</span>
+        <span>East &amp; North London</span>
+        <span>Essex-wide</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- ================= Contact ================= -->
+  <section class="contact dark on-dark" id="contact">
+    <div class="wrap">
+      <p class="eyebrow rv">Free estimates</p>
+      <h2 class="rv">Ready to start? Let's talk.</h2>
+      <p class="rv">Call Buddy for a free, no-obligation estimate — or send a text and we'll get straight back to you. Domestic and commercial work, with a 24-hour call-out when you need it.</p>
+      <a class="phone-huge rv" href="tel:+447427827199">07427 827199</a>
+      <div class="cta-row rv">
+        <a class="btn btn-amber" href="tel:+447427827199">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          Call now
+        </a>
+        <a class="btn btn-ghost" href="sms:+447427827199">Send a text</a>
+      </div>
+      <p class="contact-notes rv">
+        <b>Mr Bahadur Singh, Owner</b><span class="dot">·</span>BSK Builders Ltd<span class="dot">·</span>Upminster, Essex<span class="dot">·</span>24hr call-out
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-in">
+    <span>© <span id="yr">2026</span> BSK Builders Ltd · Upminster, Essex</span>
+    <a href="tel:+447427827199">07427 827199</a>
+  </div>
+</footer>
+
+<div class="mobile-call-bar">
+  <a href="tel:+447427827199">📞 Call for a free estimate</a>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// One-time scroll reveal (skipped entirely under reduced motion)
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
