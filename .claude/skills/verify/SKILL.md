@@ -9,6 +9,7 @@ This repo is a collection of self-contained static sites (no build step):
 - `index.html` — CFM landing page
 - `pipetech/index.html` — PipeTech Solutions one-pager
 - `pot/index.html` — Round Pot night-out kitty app (localStorage, vanilla JS)
+- `bsk/index.html` — BSK Builders one-pager (gallery images live in `bsk/images/`)
 
 ## Launch
 
