@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSK Builders Ltd — Roofing, Extensions &amp; Refurbishment | Upminster, Essex</title>
+<meta name="description" content="Roofing and construction specialists in Upminster, serving London & Essex. 25+ years' experience, 9.5/10 on Checkatrade from 22 verified reviews. Free estimates — call 07427 827199.">
+<meta property="og:title" content="BSK Builders Ltd — Roofing, Extensions & Refurbishment | Upminster, Essex">
+<meta property="og:description" content="Checkatrade-vetted builders in Upminster. Roofing, extensions, loft conversions and refurbishment across London & Essex. Free estimates — call 07427 827199.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1c2228">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "BSK Builders Ltd",
+  "telephone": "+447427827199",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Upminster",
+    "addressRegion": "Essex",
+    "addressCountry": "GB"
+  },
+  "areaServed": ["Upminster", "Hornchurch", "Rainham", "Romford", "Grays", "Ilford", "Barking", "East London", "North London", "Essex"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "9.5",
+    "bestRating": "10",
+    "reviewCount": "22"
+  }
+}
+</script>
+<style>
+/* ============================================================
+   BSK Builders — one-page site. No frameworks, no build step.
+   Aesthetic: industrial site-signage / builder's hoarding board.
+   ============================================================ */
+:root{
+  --ink:#1c2228;
+  --ink-soft:#39434d;
+  --zinc:#5a6672;
+  --paper:#f6f5f2;
+  --white:#ffffff;
+  --amber:#f2b01e;
+  --amber-deep:#d99a08;
+  --line:#e3e1db;
+  --radius:6px;
+  --hazard:repeating-linear-gradient(-45deg, var(--amber) 0 14px, var(--ink) 14px 28px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-padding-top:84px}
+@media (prefers-reduced-motion: no-preference){
+  html{scroll-behavior:smooth}
+}
+body{
+  font-family:'Barlow',system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  color:var(--ink);background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+h1,h2,h3{
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+  font-weight:800;text-transform:uppercase;line-height:1.02;
+  letter-spacing:.01em;
+}
+
+/* Eyebrow label + hazard stripe chip */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;font-size:15px;
+  color:var(--zinc);
+}
+.eyebrow::before{
+  content:"";width:34px;height:10px;border-radius:2px;
+  background:var(--hazard);flex:none;
+}
+.dark .eyebrow{color:var(--amber)}
+
+/* Hazard divider bars between major sections */
+.hazard-bar{height:10px;background:var(--hazard)}
+
+/* Dark sections + blueprint grid overlay */
+.dark{background:var(--ink);color:var(--white);position:relative}
+.dark::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:52px 52px;
+}
+.dark > .wrap{position:relative;z-index:1}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:84px 0}
+.section-head{max-width:640px;margin-bottom:44px}
+.section-head h2{font-size:clamp(34px,4.5vw,52px);margin-top:12px}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:18px;
+  padding:14px 26px;border-radius:var(--radius);
+  text-decoration:none;min-height:48px;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.btn svg{flex:none}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:var(--amber-deep)}
+.btn-ghost{border:2px solid rgba(255,255,255,.35);color:var(--white)}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none!important;transform:none!important;animation:none!important}
+}
+
+/* ---------------- Header ---------------- */
+header{
+  position:sticky;top:0;z-index:100;
+  background:var(--ink);color:var(--white);
+  border-bottom:3px solid var(--amber);
+}
+.header-in{
+  max-width:1120px;margin:0 auto;padding:12px 24px;
+  display:flex;align-items:center;gap:16px;
+}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+.logo-mark{
+  width:44px;height:44px;border-radius:var(--radius);flex:none;
+  background:var(--amber);color:var(--ink);
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:19px;
+  display:flex;align-items:center;justify-content:center;letter-spacing:.02em;
+}
+.logo-name{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:21px;text-transform:uppercase;line-height:1.05}
+.logo-tag{font-size:12.5px;color:rgba(255,255,255,.65);letter-spacing:.08em;text-transform:uppercase}
+nav{display:flex;gap:26px}
+nav a{
+  text-decoration:none;color:rgba(255,255,255,.85);
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;font-size:16px;padding:6px 0;
+}
+nav a:hover{color:var(--amber)}
+.btn-call{padding:11px 18px;font-size:16px}
+.call-short{display:none}
+@media (max-width:900px){
+  nav{display:none}
+}
+@media (max-width:620px){
+  .logo-tag{display:none}
+  .call-long{display:none}
+  .call-short{display:inline}
+}
+
+/* ---------------- Hero ---------------- */
+.hero{padding:96px 0 72px}
+.hero h1{font-size:clamp(52px,8vw,96px);margin:16px 0 20px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .lead{max-width:620px;font-size:19px;color:rgba(255,255,255,.82);margin-bottom:32px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+.trust-strip{
+  margin-top:64px;padding-top:36px;
+  border-top:1px solid rgba(255,255,255,.14);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;
+}
+.trust-num{
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;
+  font-size:clamp(38px,4.5vw,54px);color:var(--amber);line-height:1;
+}
+.trust-label{font-size:14.5px;color:rgba(255,255,255,.7);margin-top:6px}
+@media (max-width:900px){.trust-strip{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.trust-strip{gap:22px}}
+
+/* ---------------- Services (brick-course grid) ---------------- */
+.brick-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.svc{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--white);padding:26px 24px;
+}
+.svc h3{font-size:23px;margin:14px 0 8px}
+.svc p{font-size:15.5px;color:var(--zinc)}
+.tick{
+  width:34px;height:34px;border-radius:var(--radius);
+  background:var(--amber);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+}
+.span-3{grid-column:span 3}
+.span-4{grid-column:span 4}
+.span-5{grid-column:span 5}
+.span-7{grid-column:span 7}
+.svc-cta{
+  grid-column:span 7;background:var(--ink);color:var(--white);
+  border:none;border-radius:var(--radius);padding:26px 24px;
+  display:flex;flex-direction:column;justify-content:center;gap:6px;
+}
+.svc-cta h3{font-size:23px;color:var(--white)}
+.svc-cta p{color:rgba(255,255,255,.75);font-size:15.5px}
+.svc-cta a{color:var(--amber);font-weight:700;text-decoration:none;font-size:19px}
+.svc-cta a:hover{color:var(--amber-deep)}
+@media (max-width:900px){
+  .brick-grid > *{grid-column:span 6}
+}
+@media (max-width:620px){
+  .brick-grid > *{grid-column:span 12}
+}
+
+/* ---------------- Gallery ---------------- */
+.gal-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:210px;gap:14px;
+}
+.gal-item{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  background:var(--ink-soft);
+}
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease-out;
+}
+.gal-item:hover img{transform:scale(1.045)}
+.gal-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:26px 16px 12px;
+  background:linear-gradient(transparent, rgba(28,34,40,.85));
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;font-size:16px;
+}
+.gal-wide{grid-column:span 2;grid-row:span 2}
+.gal-tall{grid-row:span 2}
+.gal-more{
+  border:2px dashed rgba(255,255,255,.35);background:transparent;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:20px;font-size:15.5px;color:rgba(255,255,255,.8);
+}
+.gal-more strong{color:var(--amber)}
+@media (max-width:900px){
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:190px}
+}
+@media (max-width:620px){
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:230px}
+  .gal-wide,.gal-tall{grid-column:auto;grid-row:auto}
+}
+
+/* ---------------- Reviews ---------------- */
+.scoreboard{
+  background:var(--ink);color:var(--white);
+  border-left:8px solid var(--amber);border-radius:var(--radius);
+  padding:30px 34px;margin-bottom:36px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 44px;
+}
+.score-big{
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;
+  font-size:clamp(52px,6vw,74px);color:var(--amber);line-height:1;
+}
+.score-meta{font-size:15.5px;color:rgba(255,255,255,.75);max-width:250px}
+.subscores{display:flex;flex-wrap:wrap;gap:14px 32px;margin-left:auto}
+.subscore .n{
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;
+  font-size:30px;color:var(--white);line-height:1.1;
+}
+.subscore .l{font-size:13.5px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:900px){.subscores{margin-left:0}}
+
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.review{
+  background:var(--white);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.review-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.review-job{
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:17px;
+}
+.badge-10{
+  flex:none;background:var(--ink);color:var(--amber);
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:15px;
+  padding:4px 9px;border-radius:var(--radius);letter-spacing:.04em;
+}
+.review q{font-size:15.5px;color:var(--ink-soft);quotes:"\201C" "\201D"}
+.review-src{margin-top:auto;font-size:13.5px;color:var(--zinc);text-transform:uppercase;letter-spacing:.07em}
+@media (max-width:900px){.review-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.review-grid{grid-template-columns:1fr}}
+
+/* ---------------- Vetting / About ---------------- */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.about-copy p{color:var(--ink-soft);margin:14px 0 24px;max-width:52ch}
+.vet-list{
+  list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 20px;
+}
+.vet-list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:15.5px;font-weight:500;
+}
+.vet-list svg{flex:none;margin-top:3px;color:var(--amber-deep)}
+.promise{
+  background:var(--ink);color:var(--white);border-radius:var(--radius);
+  overflow:hidden;
+}
+.promise::before{content:"";display:block;height:10px;background:var(--hazard)}
+.promise-in{padding:30px 28px}
+.promise h3{font-size:26px;color:var(--amber);margin-bottom:16px}
+.promise ul{list-style:none;display:grid;gap:11px}
+.promise li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:rgba(255,255,255,.85)}
+.promise svg{flex:none;margin-top:3px;color:var(--amber)}
+@media (max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .vet-list{grid-template-columns:1fr}
+}
+
+/* ---------------- Areas ---------------- */
+.areas{padding:56px 0}
+.areas h2{font-size:clamp(26px,3.2vw,36px);margin-top:12px;margin-bottom:22px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.pills li{
+  border:1px solid var(--line);background:var(--white);
+  border-radius:var(--radius);padding:8px 16px;
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:15px;color:var(--ink-soft);
+}
+
+/* ---------------- Contact ---------------- */
+.contact{text-align:center;padding:96px 0}
+.contact h2{font-size:clamp(40px,6vw,64px);margin:14px 0 16px}
+.contact p{max-width:520px;margin:0 auto 26px;color:rgba(255,255,255,.8)}
+.contact-phone{
+  display:inline-block;text-decoration:none;color:var(--amber);
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;
+  font-size:clamp(44px,7vw,78px);line-height:1;margin-bottom:30px;
+}
+.contact-phone:hover{color:var(--amber-deep)}
+.contact-ctas{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-bottom:36px}
+.contact-notes{
+  font-size:14.5px;color:rgba(255,255,255,.6);
+  display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px;
+}
+
+/* ---------------- Footer ---------------- */
+footer{
+  background:var(--ink);color:rgba(255,255,255,.6);
+  border-top:1px solid rgba(255,255,255,.12);
+  padding:22px 0;font-size:14.5px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--amber);text-decoration:none}
+footer a:hover{color:var(--amber-deep)}
+
+/* ---------------- Mobile sticky call bar ---------------- */
+.call-bar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;
+  background:var(--amber);color:var(--ink);text-decoration:none;
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;font-size:19px;
+  padding:15px 16px;align-items:center;justify-content:center;gap:10px;
+}
+.call-bar:hover{background:var(--amber-deep)}
+@media (max-width:620px){
+  .call-bar{display:flex}
+  body{padding-bottom:58px}
+}
+
+/* ---------------- Scroll reveal ---------------- */
+html.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease-out,transform .55s ease-out}
+html.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html.js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a class="logo" href="#top" aria-label="BSK Builders Ltd — back to top">
+      <span class="logo-mark" aria-hidden="true">BSK</span>
+      <span>
+        <span class="logo-name">BSK Builders Ltd</span><br>
+        <span class="logo-tag">Upminster · Essex</span>
+      </span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-amber btn-call" href="tel:+447427827199">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      <span class="call-long">Call 07427 827199</span>
+      <span class="call-short">07427 827199</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="dark hero">
+    <div class="wrap">
+      <p class="eyebrow">Roofing &amp; construction · London and Essex</p>
+      <h1>Built right.<br>Built to <em>last.</em></h1>
+      <p class="lead">From new roofs, extensions and loft conversions to full refurbishments — BSK Builders is a Checkatrade-vetted team with 25 years in the trade. Estimates are always free.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-amber" href="tel:+447427827199">Call for a free estimate</a>
+        <a class="btn btn-ghost" href="#services">See our services</a>
+      </div>
+      <div class="trust-strip">
+        <div class="reveal">
+          <div class="trust-num">9.5/10</div>
+          <div class="trust-label">Checkatrade score, 22 reviews</div>
+        </div>
+        <div class="reveal">
+          <div class="trust-num">25+</div>
+          <div class="trust-label">Years in the industry</div>
+        </div>
+        <div class="reveal">
+          <div class="trust-num">12</div>
+          <div class="trust-label">Vetting checks passed</div>
+        </div>
+        <div class="reveal">
+          <div class="trust-num">24hr</div>
+          <div class="trust-label">Call-out available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hazard-bar" aria-hidden="true"></div>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What we do</p>
+        <h2>One team for the whole job</h2>
+      </div>
+      <div class="brick-grid">
+        <article class="svc span-5 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Roofing</h3>
+          <p>Installations, repairs and maintenance across all roof types — our headline service.</p>
+        </article>
+        <article class="svc span-4 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Extensions</h3>
+          <p>Single and double-storey extensions built properly, from footings to finish.</p>
+        </article>
+        <article class="svc span-3 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Loft Conversions</h3>
+          <p>Turn unused loft space into bedrooms, offices and bathrooms.</p>
+        </article>
+        <article class="svc span-3 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Bathroom &amp; Room Refurbishment</h3>
+          <p>Complete refits, finished to the highest standard.</p>
+        </article>
+        <article class="svc span-4 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Painting &amp; Decorating</h3>
+          <p>Clean lines and tidy finishes, inside and out.</p>
+        </article>
+        <article class="svc span-5 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Plastering &amp; Skimming</h3>
+          <p>Smooth, true walls and ceilings ready for decoration.</p>
+        </article>
+        <article class="svc span-5 reveal">
+          <div class="tick" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Landscaping</h3>
+          <p>Patios, paths and garden works to match the standard indoors.</p>
+        </article>
+        <aside class="svc-cta reveal">
+          <h3>Not sure where to start?</h3>
+          <p>Tell us what you're planning — estimates are free and there's no obligation.</p>
+          <a href="tel:+447427827199">Call 07427 827199</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="hazard-bar" aria-hidden="true"></div>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="dark" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Our work</p>
+        <h2>The finish speaks for itself</h2>
+      </div>
+      <div class="gal-grid">
+        <figure class="gal-item gal-wide reveal">
+          <img src="images/kitchen-refit-1.jpg" alt="Completed kitchen refit with grey gloss units, marble-effect tiling and integrated appliances" loading="lazy">
+          <figcaption class="gal-cap">Full kitchen refit</figcaption>
+        </figure>
+        <figure class="gal-item reveal">
+          <img src="images/kitchen-refit-2.jpg" alt="Marble-effect floor and wall tiling in a refitted kitchen" loading="lazy">
+          <figcaption class="gal-cap">Flooring &amp; tiling</figcaption>
+        </figure>
+        <figure class="gal-item gal-tall reveal">
+          <img src="images/kitchen-refit-3.jpg" alt="Grey gloss kitchen units and worktops with integrated Bosch appliances" loading="lazy">
+          <figcaption class="gal-cap">Units &amp; worktops</figcaption>
+        </figure>
+        <figure class="gal-item reveal">
+          <img src="images/kitchen-refit-4.jpg" alt="Finished kitchen refit showing grey gloss cabinetry and tiled splashback" loading="lazy">
+          <figcaption class="gal-cap">Full kitchen refit</figcaption>
+        </figure>
+        <figure class="gal-item reveal">
+          <img src="images/kitchen-in-progress.jpg" alt="White kitchen mid-installation with units being fitted" loading="lazy">
+          <figcaption class="gal-cap">Work in progress</figcaption>
+        </figure>
+        <div class="gal-item gal-more reveal">
+          <p>This is a small sample — see <strong>97+ more job photos</strong> on our Checkatrade profile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hazard-bar" aria-hidden="true"></div>
+
+  <!-- ============ REVIEWS ============ -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Reviews</p>
+        <h2>What our customers say</h2>
+      </div>
+
+      <div class="scoreboard reveal">
+        <div class="score-big">9.5/10</div>
+        <p class="score-meta">Based on 22 verified reviews on Checkatrade · member since 2023</p>
+        <div class="subscores">
+          <div class="subscore"><div class="n">9.5</div><div class="l">Quality</div></div>
+          <div class="subscore"><div class="n">9.5</div><div class="l">Reliability</div></div>
+          <div class="subscore"><div class="n">9.5</div><div class="l">Communication</div></div>
+        </div>
+      </div>
+
+      <div class="review-grid">
+        <article class="review reveal">
+          <div class="review-top"><span class="review-job">New roof</span><span class="badge-10">10/10</span></div>
+          <q>They were punctual and worked long days, even at weekends, until the job was finished. We are extremely pleased with our new roof — Buddy and his team did a great job at a fair price.</q>
+          <p class="review-src">Verified review · RM14</p>
+        </article>
+        <article class="review reveal">
+          <div class="review-top"><span class="review-job">Outbuilding &amp; more</span><span class="badge-10">10/10</span></div>
+          <q>Every once in a while you come across people that go above and beyond your expectations. I initially hired them for one job but have since given them several more. Have definitely found a builder for life.</q>
+          <p class="review-src">Verified review · RM13</p>
+        </article>
+        <article class="review reveal">
+          <div class="review-top"><span class="review-job">Full home refurbishment</span><span class="badge-10">10/10</span></div>
+          <q>We initially hired BSK to re-fit three bathrooms. The job was completed to the highest standard, no corners cut — so we hired them for the total refurbishment of our new home. Professional, dependable, honest, with great workmanship.</q>
+          <p class="review-src">Verified review · RM1</p>
+        </article>
+        <article class="review reveal">
+          <div class="review-top"><span class="review-job">Home renovation</span><span class="badge-10">10/10</span></div>
+          <q>Buddy and his team were brilliant and completely transformed the house. They quoted a very reasonable price and did a very quality job. At last I have found an honest builder who I can rely on.</q>
+          <p class="review-src">Verified review · RM17</p>
+        </article>
+        <article class="review reveal">
+          <div class="review-top"><span class="review-job">Rear extension</span><span class="badge-10">10/10</span></div>
+          <q>We recently used BSK Builders to extend our property. Communication was excellent throughout and they were very quick. Very polite and tidy, good team work and on time. We were very pleased!</q>
+          <p class="review-src">Verified review · IG3</p>
+        </article>
+        <article class="review reveal">
+          <div class="review-top"><span class="review-job">Full kitchen refit</span><span class="badge-10">10/10</span></div>
+          <q>Reliable, efficient and very courteous. Their work is of the highest standard and everything is left tidy and clean at the end of each day. This is the third job they've done for us in the last year.</q>
+          <p class="review-src">Verified review · RM13</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VETTING / ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="eyebrow">Vetted &amp; checked</p>
+          <h2 style="font-size:clamp(32px,4vw,46px);margin-top:12px">A builder you can actually check up on</h2>
+          <p>Anyone can promise quality. As Checkatrade members, we've passed up to 12 independent vetting checks — so you don't have to take our word for it.</p>
+          <ul class="vet-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Identity verified</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Proof of address</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Financial checks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Qualifications &amp; accreditations</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>County court judgement checks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Company trading history</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Director checks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Enhanced business check</li>
+          </ul>
+        </div>
+        <div class="promise reveal">
+          <div class="promise-in">
+            <h3>The BSK Promise</h3>
+            <ul>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Free, no-obligation estimates</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Insurance work undertaken</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Domestic &amp; commercial</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cards accepted</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>24-hour call-out</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sites left tidy every day</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>£1,000 Checkatrade guarantee (T&amp;Cs apply)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AREAS ============ -->
+  <section class="areas" aria-labelledby="areas-heading">
+    <div class="wrap">
+      <p class="eyebrow">Areas served</p>
+      <h2 id="areas-heading">Based in Upminster, serving London &amp; Essex</h2>
+      <ul class="pills">
+        <li>Upminster</li>
+        <li>Hornchurch</li>
+        <li>Rainham</li>
+        <li>Romford</li>
+        <li>Grays</li>
+        <li>Ilford</li>
+        <li>Barking</li>
+        <li>East &amp; North London</li>
+        <li>Essex-wide</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="hazard-bar" aria-hidden="true"></div>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="dark contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Free estimates</p>
+      <h2>Ready to start? Let's talk.</h2>
+      <p>Call Buddy for a free, no-obligation estimate — whether it's a leaking roof, a full extension or anything in between.</p>
+      <a class="contact-phone" href="tel:+447427827199">07427 827199</a>
+      <div class="contact-ctas">
+        <a class="btn btn-amber" href="tel:+447427827199">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          Call now
+        </a>
+        <a class="btn btn-ghost" href="sms:+447427827199">Send a text</a>
+      </div>
+      <div class="contact-notes">
+        <span>Mr Bahadur Singh, Owner</span>
+        <span>BSK Builders Ltd</span>
+        <span>Upminster, Essex</span>
+        <span>24hr call-out</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> BSK Builders Ltd · Upminster, Essex</span>
+    <a href="tel:+447427827199">07427 827199</a>
+  </div>
+</footer>
+
+<a class="call-bar" href="tel:+447427827199">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+  Call for a free estimate
+</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// One-time scroll reveal (subtle; CSS handles reduced-motion)
+var els = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { io.observe(el); });
+} else {
+  els.forEach(function (el) { el.classList.add('in'); });
+}
+</script>
+
+</body>
+</html>
